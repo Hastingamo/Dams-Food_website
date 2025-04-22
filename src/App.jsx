@@ -1,6 +1,6 @@
 import LayOut from "./LayOut";
-import Home from "./pagess/Home";
-import Food from "./pagess/Food";
+import Home from "./Pagess/Home"
+import Food from "./Pagess/Food";
 import CockTailss from "./Pagess/CockTailss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
