@@ -155,6 +155,46 @@ const Sidebars = () => {
             }`}
             onClick={() => navigate("/")}
           >
+            AddToFavorite
+          </h1>
+
+        </div>
+        <div
+          className="flex items-center space-x-2 group"
+          onMouseEnter={() => setIsOpen(true)}
+          onMouseLeave={() => setIsOpen(false)}
+        >
+          <img
+            className="w-6 h-6 text-white group-hover:text-blue-400"
+            src="Images/user.png"
+            alt=""
+          />
+          <h1
+            className={`text-white text-lg group-hover:block ${
+              isOpen ? "block" : "hidden"
+            }`}
+            onClick={() => navigate("/")}
+          >
+            safe item
+          </h1>
+
+        </div>
+        <div
+          className="flex items-center space-x-2 group"
+          onMouseEnter={() => setIsOpen(true)}
+          onMouseLeave={() => setIsOpen(false)}
+        >
+          <img
+            className="w-6 h-6 text-white group-hover:text-blue-400"
+            src="Images/user.png"
+            alt=""
+          />
+          <h1
+            className={`text-white text-lg group-hover:block ${
+              isOpen ? "block" : "hidden"
+            }`}
+            onClick={() => navigate("/")}
+          >
             Profile
           </h1>
 
