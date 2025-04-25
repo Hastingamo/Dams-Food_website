@@ -15,9 +15,7 @@ function Food() {
             className="border-black border-solid border rounded p-1 text-black xm:text-2xl md:text-2xl md:p-2"
           ></input>
           <Foods />
-          <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-            Click Me
-          </button>
+          
         </div>
       </div>
     </>

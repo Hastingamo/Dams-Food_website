@@ -4,7 +4,7 @@ function Foods() {
   return (
     <>
       <div className="">
-        <div className=" ml-20 w-[20rem] grid grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 xp:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 mt-6 px-5">
+        <div className="ml-14 xp:ml-20 xs:w-[22rem] grid grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 xp:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 mt-6 px-5">
           <div className="shadow-lg  justify-center items-center flex flex-col gap-3 p-5 bg-white rounded-lg">
             <img src="Images/all.png"  className="w-5 h-6" alt="" srcset="" />
             <h1 className="text-2xl font-bold">all</h1>
@@ -30,7 +30,7 @@ function Foods() {
             <img src="Images/burger.png" className="w-5 h-6" alt="" srcset="" />
             <h1 className="text-2xl font-bold">burger</h1>
           </div>
-          <div className="shadow-lg  justify-center items-center flex flex-col gap-3 p-5 bg-white rounded-lg">
+          <div className="shadow-lg w-[16rem]  justify-center items-center flex flex-col gap-3 p-5 bg-white rounded-lg">
             <img src="" alt="" srcset="" />
             <h1 className="text-2xl font-bold">main_course</h1>
           </div>
