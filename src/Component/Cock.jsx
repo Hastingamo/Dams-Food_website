@@ -60,25 +60,32 @@ function Cock() {
             <h1 className="text-2xl font-bold">main_course</h1>
           </div>
         </div>
-      </div>
-      <div className="ml-14 xp:ml-20 grid grid-cols-2 xp:grid-col-3 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 xp:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-[6rem] px-5">
-      {cockTail.length > 0 ? (
-          cockTail.map((cocktail) => (
-            <div key={cocktail.idDrink} className="bg-[#FAEBD7] rounded-lg shadow-md overflow-hidden">
-              <img
-                src={cocktail.strDrinkThumb}
-                alt={cocktail.strDrink}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-xl font-semibold">{cocktail.strDrink}</h2>
-                <p className="text-gray-500">{cocktail.strCategory} - {cocktail.strAlcoholic}</p>
+        <div className="ml-14 xp:ml-20 grid grid-cols-2 xp:grid-col-3 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 xp:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-[6rem] px-5">
+          {cockTail.length > 0 ? (
+            cockTail.map((cocktail) => (
+              <div
+                key={cocktail.idDrink}
+                className="bg-[#FAEBD7] rounded-lg shadow-md overflow-hidden"
+              >
+                <img
+                  src={cocktail.strDrinkThumb}
+                  alt={cocktail.strDrink}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold">{cocktail.strDrink}</h2>
+                  <p className="text-gray-500">
+                    {cocktail.strCategory} - {cocktail.strAlcoholic}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-600 col-span-full">No cocktails found.</p>
-        )}
+            ))
+          ) : (
+            <p className="text-center text-gray-600 col-span-full">
+              No cocktails found.
+            </p>
+          )}
+        </div>
       </div>
     </>
   );
