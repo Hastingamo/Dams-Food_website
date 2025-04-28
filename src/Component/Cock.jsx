@@ -1,17 +1,16 @@
-import React from "react";
-import { useState, useEffect } from "react";
-function Foods() {
-  const [meals, setMeals] = useState([]); 
-
-  useEffect(() => {
-    fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=') 
-      .then(response => response.json())
-      .then(data => setMeals(data.meals))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
+import React from 'react'
+import { useState, useEffect } from 'react'
+function Cock() {
+    const [cockTail, setCockTail] = useState([])
+      useEffect(() => {
+        fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php') 
+          .then(response => response.json())
+          .then(data => setCockTail(data.cockTail))
+          .catch(error => console.error('Error fetching data:', error));
+      }, []);
   return (
     <>
-      <div className="">
+        <div className="">
         <div className="ml-14 xp:ml-20 xs:w-[22rem] grid grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 xp:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6 px-5">
           <div className="shadow-lg  justify-center items-center flex flex-col gap-3 p-5 bg-[#FAEBD7] rounded-lg">
             <img src="Images/all.png"  className="w-5 h-6" alt="" srcset="" />
@@ -45,18 +44,18 @@ function Foods() {
         </div>
       </div>
       <div className="ml-14 xp:ml-20 grid grid-cols-2 xp:grid-col-3 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 xp:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-15 px-5">
-      {meals?.map(meal => (  // Step 9
-          <div key={meal.idMeal} className=" rounded-lg shadow-md bg-[#FAEBD7] overflow-hidden"> {/* Step 10 */}
-            <img src={meal.strMealThumb} alt={meal.strMeal} className="w-full h-48 object-cover" /> {/* Step 11 */}
+      {cockTail?.map(cocktail => (  // Step 9
+          <div key={cocktail.idMeal} className="bg-[#FAEBD7] rounded-lg shadow-md overflow-hidden"> {/* Step 10 */}
+            <img src={cocktail.strMealThumb} alt={cocktail.strMeal} className="w-full h-48 object-cover" /> {/* Step 11 */}
             <div className="p-4">
-              <h2 className="text-xl font-semibold">{meal.strMeal}</h2> {/* Step 12 */}
-              <p className="text-gray-600">{meal.strArea} - {meal.strCategory}</p> {/* Step 13 */}
+              <h2 className="text-xl font-semibold">{cocktail.strMeal}</h2> {/* Step 12 */}
+              <p className="text-gray-600">{cocktail.strArea} - {cocktail.strCategory}</p> {/* Step 13 */}
             </div>
           </div>
         ))}
       </div>
     </>
-  );
+  )
 }
 
-export default Foods;
+export default Cock

@@ -86,7 +86,7 @@ const Sidebars = () => {
           />
 
           <h1
-            className={`text-white text-lg group-hover:block ${
+            className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
             onClick={() => navigate("/Home")}
@@ -108,7 +108,7 @@ const Sidebars = () => {
           />
 
           <h1
-            className={`text-white text-lg group-hover:block ${
+            className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
             onClick={() => navigate("/food")}
@@ -126,12 +126,12 @@ const Sidebars = () => {
           onMouseLeave={() => setIsOpen(false)}
         >
           <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
+            className="w-6 h-6 text-black group-hover:text-blue-400"
             src="Images/cocktail.png"
             alt=""
           />
           <h1
-            className={`text-white text-lg group-hover:block ${
+            className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
             onClick={() => navigate("/cocktails")}
@@ -150,7 +150,7 @@ const Sidebars = () => {
             alt=""
           />
           <h1
-            className={`text-white text-lg group-hover:block ${
+            className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
             onClick={() => navigate("/")}
@@ -170,7 +170,7 @@ const Sidebars = () => {
             alt=""
           />
           <h1
-            className={`text-white text-lg group-hover:block ${
+            className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
             onClick={() => navigate("/")}
@@ -190,7 +190,7 @@ const Sidebars = () => {
             alt=""
           />
           <h1
-            className={`text-white text-lg group-hover:block ${
+            className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
             onClick={() => navigate("/")}
