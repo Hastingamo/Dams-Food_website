@@ -4,11 +4,11 @@ import Foods from "../Component/Foods.jsx";
 function Food() {
   return (
     <>
-      <div className="flex flex-row items-center justify-center overflow-x-hidden  ">
+      <div className="flex flex-row items-center bg-[#C88D84]  justify-center overflow-x-hidden  ">
         <div>
           <Sidebars />
         </div>
-        <div className="flex flex-col items-center justify-center  bg-[#C88D84] rounded-lg  pl-8">
+        <div className="flex flex-col items-center justify-center  rounded-lg  pl-8">
           <h1 className="text-3xl font-bold mb-4">Food</h1>
           <input
             placeholder="search"

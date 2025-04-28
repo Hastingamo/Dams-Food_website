@@ -9,6 +9,10 @@ function CockTailss() {
     </div>
     <div className="flex flex-col items-center justify-center w-full h-full bg-white rounded-lg shadow-lg p-8">
       <h1 className="text-3xl font-bold mb-4">Cocktail</h1>
+      <input
+            placeholder="search"
+            className="border-black border-solid border rounded p-1 text-black xm:text-2xl md:text-2xl md:p-2"
+          ></input>
       <Cock/>
     </div>
   </div>
