@@ -1,22 +1,24 @@
-import React from 'react'
-import Sidebars from '../Component/Sidebars.jsx'
-import Cock from '../Component/Cock.jsx'
+import React from "react";
+import Sidebars from "../Component/Sidebars.jsx";
+import Cock from "../Component/Cock.jsx";
 function CockTailss() {
   return (
-    <div className="flex flex-row items-center justify-center h-screen bg-gradient-to-r from-green-400 to-blue-500">
-    <div>
-      <Sidebars/>
-    </div>
-    <div className="flex flex-col items-center justify-center w-full h-full bg-white rounded-lg shadow-lg p-8">
-      <h1 className="text-3xl font-bold mb-4">Cocktail</h1>
-      <input
+    <div className="flex flex-row items-center justify-center h-screen ">
+      <div>
+        <Sidebars />
+      </div>
+      <div className="flex justify-center items-center h-screen">
+        <div className="flex flex-col items-center justify-center  rounded-lg  pl-8">
+          <h1 className="text-3xl font-bold mb-4">Food</h1>
+          <input
             placeholder="search"
             className="border-black border-solid border rounded p-1 text-black xm:text-2xl md:text-2xl md:p-2"
           ></input>
-      <Cock/>
+          <Cock />
+        </div>
+      </div>{" "}
     </div>
-  </div>
-  )
+  );
 }
 
-export default CockTailss
+export default CockTailss;
