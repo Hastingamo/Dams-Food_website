@@ -81,7 +81,7 @@ function Foods() {
       </div>
 
       {/* Filtered Meals */}
-      <div className="ml-14 xp:ml-20 grid grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6 px-5 pt-96">
+      <div className="ml-14 xp:ml-20 grid grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-6 px-5">
         {filteredMeals.map((meal) => (
           <div
             key={meal.idMeal}
