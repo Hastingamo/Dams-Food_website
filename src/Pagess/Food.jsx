@@ -1,8 +1,7 @@
 import React from "react";
 import Sidebars from "../Component/Sidebars.jsx";
 import Foods from "../Component/Foods.jsx";
-import FoodLoading from "../Component/FoodLoading.jsx";
-import MoonLoader from "react-spinners/MoonLoader";
+
 function Food() {
   // const [loading, setLoading] = useState(true);
   // useEffect(() => {
@@ -23,10 +22,6 @@ function Food() {
           <div className="flex justify-center items-center h-screen">
             <div className="flex flex-col items-center justify-center  rounded-lg  pl-8">
               <h1 className="text-3xl font-bold mb-4">Food</h1>
-              <input
-                placeholder="search"
-                className="border-black border-solid border rounded p-1 text-black xm:text-2xl md:text-2xl md:p-2"
-              ></input>
               <Foods />
             </div>
           </div>

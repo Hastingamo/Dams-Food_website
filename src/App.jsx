@@ -2,7 +2,7 @@ import LayOut from "./LayOut";
 import Home from "./Pagess/Home"
 import CockTailss from "./Pagess/CockTailss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Food from "./pagess/Food";
+import Food from "././Pagess/Food"
 function App() {
   return (
     <>
