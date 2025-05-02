@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebars from "../Component/Sidebars.jsx";
 import { MoonLoader } from "react-spinners";
+import { motion } from "framer-motion";
 
 function Food() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,7 @@ function Food() {
       const data = await res.json();
       if (data.categories) {
         setCategories(data.categories);
-        const defaultCategory = data.categories[0].strCategory;
+        const defaultCategory = data.categories[2].strCategory;
         setSelectedCategory(defaultCategory);
         filterByCategory(defaultCategory); // auto-load meals from the first category
       }
@@ -39,7 +40,6 @@ function Food() {
 
   // Search meals by name
   const searchMeals = async (query) => {
-    setLoading(true);
     try {
       const res = await fetch(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
@@ -124,9 +124,12 @@ function Food() {
 
             {/* Category buttons */}
             <div className="flex flex-wrap ml-11 gap-2 mb-4 justify-center">
-              {categories.map((cat) => (
-                <button
+              {categories.map((cat, index) => (
+                <motion.button
                   key={cat.idCategory}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 1, delay: index * 0.05 }}
                   className={`px-3 py-1 rounded border ${
                     selectedCategory === cat.strCategory
                       ? "bg-black text-white"
@@ -136,36 +139,42 @@ function Food() {
                 >
                   <img
                     className="w-5 h-5"
-                    src={cat.strMealThumb}
-                    alt={cat.strMeal}
+                    src={cat.strCategoryThumb}
+                    alt={cat.strCategoryThumb}
                     srcset=""
                   />
                   {cat.strCategory}
-                </button>
+                </motion.button>
               ))}
             </div>
 
             {error && <p className="text-red-600">{error}</p>}
 
             <div className="grid ml-11  grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6 px-5">
-              {meals.map((meal) => (
-                <div
-                  key={meal.idMeal}
-                  className="bg-[#FAEBD7] rounded-lg p-4 shadow-md"
+              {meals.map((meal, index) => (
+                <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                // viewport={{ once: true }}
+                whileHover={{ scale: 1.05, shadow: "0 4px 20px rgba(0, 0, 0, 0.2), ", duration: 0.1 }}
+                  
+                key={meal.idMeal}
+                transition={{ duration: 1, delay: index * 0.05 }}
+                className="bg-white rounded-lg  shadow-md hover:shadow-lg transition"
                 >
                   <img
                     src={meal.strMealThumb}
                     alt={meal.strMeal}
-                    className="rounded w-full h-40 object-cover mb-2"
+                    className="rounded  object-cover mb-2"
                   />
-                  <h2 className="text-xl font-semibold">{meal.strMeal}</h2>
+                  <h2 className="text-xl font-semibold flex justify-center text-center pb-5">{meal.strMeal}</h2>
                   {/* Full search includes area/category, filter does not */}
                   {meal.strArea && meal.strCategory && (
                     <p className="text-gray-600">
                       {meal.strArea} - {meal.strCategory}
                     </p>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
