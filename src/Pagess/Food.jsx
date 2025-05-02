@@ -20,7 +20,9 @@ function Food() {
     if (!query) return;
     setLoading(true);
     try {
-      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
+      const response = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`
+      );
       const data = await response.json();
       if (data.meals) {
         setMeals(data.meals);
@@ -50,6 +52,9 @@ function Food() {
 
   return (
     <div className="flex flex-row items-center bg-[#C88D84] justify-center overflow-x-hidden">
+      <div>
+        <Sidebars />
+      </div>
       {loading ? (
         <div className="flex justify-center items-center h-screen w-screen">
           <MoonLoader color="black" size={100} />
@@ -69,12 +74,22 @@ function Food() {
               className="border p-2 rounded w-full max-w-md mb-4"
             />
             {error && <p className="text-red-600">{error}</p>}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-5xl">
+            <div className="grid grid-cols-2 xm:grid-cols-3 ml-[32px] sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6 px-5">
+              {" "}
               {meals.map((meal) => (
-                <div key={meal.idMeal} className="bg-white rounded-lg p-4 shadow-md">
-                  <img src={meal.strMealThumb} alt={meal.strMeal} className="rounded w-full h-48 object-cover mb-2" />
+                <div
+                  key={meal.idMeal}
+                  className=" rounded-lg bg-[#FAEBD7] p-4 shadow-md"
+                >
+                  <img
+                    src={meal.strMealThumb}
+                    alt={meal.strMeal}
+                    className="rounded w-full h-48 object-cover mb-2"
+                  />
                   <h2 className="text-xl font-semibold">{meal.strMeal}</h2>
-                  <p className="text-gray-600">{meal.strArea} - {meal.strCategory}</p>
+                  <p className="text-gray-600">
+                    {meal.strArea} - {meal.strCategory}
+                  </p>
                 </div>
               ))}
             </div>
