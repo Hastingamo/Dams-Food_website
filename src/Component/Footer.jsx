@@ -2,7 +2,13 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div>Footer</div>
+    <>
+      <div className='w-screen bg-amber-50 h-[5rem]'>
+        <div className='flex justify-center items-center'>
+          <h1 className='text-2xl font-bold text-center'>All Rights Reserved &copy; 2023</h1>
+          </div>
+      </div>
+    </>
   )
 }
 
