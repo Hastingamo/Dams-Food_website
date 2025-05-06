@@ -98,7 +98,7 @@ function Food() {
   };
 
   return (
-    <div className="flex flex-row items-center bg-[#C88D84] justify-center overflow-x-hidden">
+    <div className="flex flex-row items-center bg-[#c88d84] justify-center overflow-x-hidden">
       <div>
         <Sidebars />
       </div>
@@ -133,7 +133,7 @@ function Food() {
                   className={`px-3 py-1 rounded border ${
                     selectedCategory === cat.strCategory
                       ? "bg-black text-white"
-                      : "bg-white text-black"
+                      : "bg-linear-to-bl from-[#c88d84]-700 to-fuchsia-50  text-[#]"
                   }`}
                   onClick={() => filterByCategory(cat.strCategory)}
                 >
@@ -160,7 +160,7 @@ function Food() {
                   
                 key={meal.idMeal}
                 transition={{ duration: 1, delay: index * 0.05 }}
-                className="bg-white rounded-lg  shadow-md hover:shadow-lg transition"
+                className="bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50  rounded-lg  shadow-md hover:shadow-lg transition"
                 >
                   <img
                     src={meal.strMealThumb}

@@ -133,6 +133,7 @@ function CockTailss() {
                     }`}
                     onClick={() => filterByCategory(cat.strCategory)}
                   >
+                    <img   src={`https://source.unsplash.com/20x20/?cocktail,${cat.strCategory}`} alt={cat.categories} className="w-4 h-4" srcset="" />
                     {cat.strCategory}
                   </motion.button>
                 ))}
@@ -152,7 +153,7 @@ function CockTailss() {
                     }}
                     key={drink.idDrink}
                     transition={{ duration: 1, delay: index * 0.05 }}
-                    className="bg-white rounded-lg shadow-md hover:shadow-lg transition"
+                    className="bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50 rounded-lg shadow-md hover:shadow-lg transition"
                   >
                     <img
                       src={drink.strDrinkThumb}

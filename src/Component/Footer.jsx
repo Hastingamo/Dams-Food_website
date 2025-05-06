@@ -3,8 +3,8 @@ import React from 'react'
 function Footer() {
   return (
     <>
-      <div className='w-screen bg-amber-50 h-[5rem]'>
-        <div className='flex justify-center items-center'>
+      <div className='w-full overflow-hidden bg-linear-60  bg-[#fbf6f5] h-[5rem]'>
+        <div className='flex bg justify-center items-center'>
           <h1 className='text-2xl font-bold text-center'>All Rights Reserved &copy; 2023</h1>
           </div>
       </div>
