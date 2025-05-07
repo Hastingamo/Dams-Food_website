@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebars from "../Component/Sidebars.jsx";
 import { MoonLoader } from "react-spinners";
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 function Food() {
   const [loading, setLoading] = useState(true);
@@ -98,7 +99,7 @@ function Food() {
   };
 
   return (
-    <div className="flex flex-row items-center bg-[#c88d84] justify-center overflow-x-hidden">
+    <div className="flex flex-row items-center bg-[#c88d84] justify-center overflow-x-hidden scroll-hidden">
       <div>
         <Sidebars />
       </div>
@@ -107,7 +108,7 @@ function Food() {
           <MoonLoader color="black" size={100} />
         </div>
       ) : (
-        <div className="w-full min-h-screen flex flex-row bg-[#C88D84] justify-center ml-[36px] pt-10 px-4 overflow-x-hidden">
+        <div className="w-full min-h-screen flex flex-row bg-[#C88D84] justify-center ml-[36px] pt-10 px-4 ">
           <div>
             <Sidebars />
           </div>
@@ -153,27 +154,34 @@ function Food() {
             <div className="grid ml-11  grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6 px-5">
               {meals.map((meal, index) => (
                 <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                // viewport={{ once: true }}
-                whileHover={{ scale: 1.05, shadow: "0 4px 20px rgba(0, 0, 0, 0.2), ", duration: 0.1 }}
-                  
-                key={meal.idMeal}
-                transition={{ duration: 1, delay: index * 0.05 }}
-                className="bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50  rounded-lg  shadow-md hover:shadow-lg transition"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  // viewport={{ once: true }}
+                  whileHover={{
+                    scale: 1.05,
+                    shadow: "0 4px 20px rgba(0, 0, 0, 0.2), ",
+                    duration: 0.1,
+                  }}
+                  key={meal.idMeal}
+                  transition={{ duration: 1, delay: index * 0.05 }}
+                  className="bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50  rounded-lg  shadow-md hover:shadow-lg transition"
                 >
-                  <img
-                    src={meal.strMealThumb}
-                    alt={meal.strMeal}
-                    className="rounded  object-cover mb-2"
-                  />
-                  <h2 className="text-xl font-semibold flex justify-center text-center pb-5">{meal.strMeal}</h2>
-                  {/* Full search includes area/category, filter does not */}
-                  {meal.strArea && meal.strCategory && (
-                    <p className="text-gray-600">
-                      {meal.strArea} - {meal.strCategory}
-                    </p>
-                  )}
+                  <Link to={`/food/${meal.idMeal}`}>
+                    <img
+                      src={meal.strMealThumb}
+                      alt={meal.strMeal}
+                      className="rounded  object-cover mb-2"
+                    />
+                    <h2 className="text-xl font-semibold flex justify-center text-center pb-5">
+                      {meal.strMeal}
+                    </h2>
+                    {/* Full search includes area/category, filter does not */}
+                    {meal.strArea && meal.strCategory && (
+                      <p className="text-gray-600">
+                        {meal.strArea} - {meal.strCategory}
+                      </p>
+                    )}
+                  </Link>
                 </motion.div>
               ))}
             </div>

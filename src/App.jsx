@@ -2,7 +2,8 @@ import LayOut from "./LayOut";
 import Home from "./Pagess/Home"
 import CockTailss from "./Pagess/CockTailss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Food from "././Pagess/Food"
+import Food from "./pagess/Food";
+import FoodDetials from "./Pagess/FoodDetials";
 function App() {
   return (
     <>
@@ -14,7 +15,7 @@ function App() {
             <Route path="/food" element={<Food/>} />
             <Route path="/cocktails" element={<CockTailss />} />
             <Route path="/cocktails/:id" element={<CockTailss />} />
-            <Route path="/food/:id" element={<Food />} />
+            <Route path="/food/:id" element={<FoodDetials />} />
             <Route path="*" element={<h1>404</h1>} />
           </Route>
         </Routes>
