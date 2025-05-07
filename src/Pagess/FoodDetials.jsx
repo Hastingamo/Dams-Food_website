@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Sidebars from "../Component/Sidebars";
 import { useParams } from "react-router-dom";
@@ -63,25 +64,37 @@ function FoodDetails() {
       case "ingredients":
         return (
           <div>
-            <h2 className="text-lg font-semibold">Ingredients:</h2>
-            <ul className="list-disc pl-5">
-              {Object.keys(meal)
-                .filter((key) => key.includes("strIngredient") && meal[key])
-                .map((key, index) => (
-                  <li key={index}>
-                    {meal[key]} - {meal[`strMeasure${key.match(/\d+/)[0]}`]}
-                  </li>
-                ))}
-            </ul>
+            <h2 className="text-lg font-semibold">order:</h2>
+            <div className="flex flex-row float-end xp: border-4 border-black gap-2 mr-6 bg-green-400 w-">
+                <button
+                  className="p-2"
+                  // onClick={() => handleOrderChange("decrease")}
+                >
+                  -
+                </button>
+                <p className="p-2">1</p>
+                <button
+                  className="p-2"
+                  // onClick={() => handleOrderChange("increase")}
+                >
+                  +
+                </button>
+              </div>
+              <button
+            // onClick={handlePlaceOrder}
+            className="bg-green-600 text-white py-6 px-28 rounded-md mt-5"
+          >
+            add to chart 
+          </button>
           </div>
         );
       case "video":
         return meal.strYoutube ? (
-          <div>
+          <div class>
             <h2 className="text-lg font-semibold">Video Instructions:</h2>
             <iframe
-              className="mt-4 w-fit"
-       
+              className="mt-4"
+              width="100%"
               height="315"
               src={meal.strYoutube.replace("watch?v=", "embed/")}
               title={meal.strMeal}
@@ -128,10 +141,10 @@ function FoodDetails() {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mb-4 mt-4">
-              <button className={`bg-white ${activeTab === "instructions" && "bg-gray-300"}`} onClick={() => setActiveTab("instructions")}>Instructions</button>
-              <button className={`bg-white ${activeTab === "ingredients" && "bg-gray-300"}`} onClick={() => setActiveTab("ingredients")}>Ingredients</button>
-              <button className={`bg-white ${activeTab === "video" && "bg-gray-300"}`} onClick={() => setActiveTab("video")}>Video</button>
+            <div className="grid grid-cols-3 gap-4 mb-4 mt-4 pr-7">
+              <button className={`bg-green-600 ${activeTab === "instructions" && "bg-gray-300"}`} onClick={() => setActiveTab("instructions")}>Instructions</button>
+              <button className={`bg-green-600 ${activeTab === "ingredients" && "bg-gray-300"}`} onClick={() => setActiveTab("ingredients")}>place order</button>
+              <button className={`bg-green-600 ${activeTab === "video" && "bg-gray-300"}`} onClick={() => setActiveTab("video")}>Video</button>
             </div>
 
             <div className="mt-4 overflow-x-hidden h-[15rem] relative">
