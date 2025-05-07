@@ -4,7 +4,7 @@ import { MoonLoader } from "react-spinners";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 
-function Food() {
+function Foods() {
   const [loading, setLoading] = useState(true);
   const [meals, setMeals] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -192,4 +192,4 @@ function Food() {
   );
 }
 
-export default Food;
+export default Foods;

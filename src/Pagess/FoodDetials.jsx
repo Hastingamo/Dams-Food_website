@@ -3,9 +3,9 @@ import Sidebars from "../Component/Sidebars";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ImageSlider from "../Component/ImageSlider";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const UNSPLASH_API_KEY = "N5nfwFtAa37JzIcThzr96azWSfLkmEIu5yEtnhq3Ob8"
 function FoodDetials() {
   const { id } = useParams();
   const [meal, setMeal] = useState(null);
@@ -25,17 +25,16 @@ function FoodDetials() {
           const mealData = data.meals[0];
           setMeal(mealData);
 
-          // ✅ Generate different variations of the same image
-          const baseImage = mealData.strMealThumb;
-          const imageVariants = [
-            baseImage,
-            `${baseImage}/preview`, // Preview version
-            `${baseImage}?grayscale`, // Grayscale version
-            `${baseImage}?blur=3`, // Blurred version
-            `${baseImage}?sepia`, // Sepia version
-          ];
+          // ✅ Fetch additional images from Unsplash
+          const query = mealData.strMeal;
+          const imageResponse = await fetch(
+            `https://api.unsplash.com/search/photos?query=${query}&client_id=${UNSPLASH_API_KEY}&per_page=5`
+          );
+          const imageData = await imageResponse.json();
+          const unsplashImages = imageData.results.map((img) => img.urls.regular);
 
-          setMealImages(imageVariants);
+          // ✅ Merge with the main image
+          setMealImages([mealData.strMealThumb, ...unsplashImages]);
         }
       } catch (error) {
         console.error("Error fetching meal details:", error);
@@ -44,6 +43,7 @@ function FoodDetials() {
 
     fetchMealDetails();
   }, [id]);
+
   // Fetch recommended meals
   useEffect(() => {
     const fetchRecommendedMeals = async () => {
@@ -83,7 +83,7 @@ function FoodDetials() {
           <ImageSlider images={mealImages} />
 
           {/* Food Details */}
-          <div className="flex flex-col justify-center text-center px-3 w-screen gap-2 shadow-lg h-fit">
+          <div className="flex flex-col justify-center text-center bg-red-200 px-3 w-screen gap-2 shadow-lg h-fit">
             <p className="text-2xl font-bold">{meal.strMeal}</p>
             <p>Category: {meal.strCategory}</p>
             <p>Area: {meal.strArea}</p>
