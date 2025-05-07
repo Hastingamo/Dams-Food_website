@@ -10,8 +10,8 @@ function FoodDetails() {
   const { id } = useParams();
   const [meal, setMeal] = useState(null);
   const [mealImages, setMealImages] = useState([]);
-  const [recommendedMeals, setRecommendedMeals] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("instructions");
 
   // Fetch meal details from TheMealDB API
   useEffect(() => {
@@ -54,30 +54,60 @@ function FoodDetails() {
     fetchMealDetails();
   }, [id]);
 
-  // Fetch recommended meals
-  useEffect(() => {
-    const fetchRecommendedMeals = async () => {
-      try {
-        const res = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood`
-        );
-        const data = await res.json();
-        if (data.meals) {
-          const filteredMeals = data.meals
-            .filter((meal) => meal.idMeal !== id)
-            .slice(0, 10);
-          setRecommendedMeals(filteredMeals);
-        }
-      } catch (error) {
-        console.error("Error fetching recommended meals:", error);
-      }
-    };
-
-    fetchRecommendedMeals();
-  }, [id]);
-
   if (loading) return <p>Loading...</p>;
   if (!meal) return <p>Meal not found.</p>;
+
+  // Tab content handler
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "ingredients":
+        return (
+          <div>
+            <h2 className="text-lg font-semibold">Ingredients:</h2>
+            <ul className="list-disc pl-5">
+              {Object.keys(meal)
+                .filter((key) => key.includes("strIngredient") && meal[key])
+                .map((key, index) => (
+                  <li key={index}>
+                    {meal[key]} - {meal[`strMeasure${key.match(/\d+/)[0]}`]}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        );
+      case "video":
+        return meal.strYoutube ? (
+          <div>
+            <h2 className="text-lg font-semibold">Video Instructions:</h2>
+            <iframe
+              className="mt-4 w-fit"
+       
+              height="315"
+              src={meal.strYoutube.replace("watch?v=", "embed/")}
+              title={meal.strMeal}
+              allowFullScreen
+            ></iframe>
+          </div>
+        ) : (
+          <p>No video available.</p>
+        );
+      default:
+        // Split the instructions into steps
+        const steps = meal.strInstructions.split(/\.(?=\s[A-Z])/);
+        return (
+          <div>
+            <h2 className="text-lg font-semibold">Instructions (Step by Step):</h2>
+            <ul className="list-decimal pl-5">
+              {steps.map((step, index) => (
+                <li key={index} className="mb-2">
+                  {step.trim()}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="flex flex-row justify-center items-center h-screen">
@@ -87,35 +117,26 @@ function FoodDetails() {
 
       <div className="flex flex-col bg-[#C88D84] h-screen w-screen md:hidden">
         <div className="flex flex-col gap-4">
-          {/* Image Slider */}
           <ImageSlider images={mealImages} />
 
-          {/* Food Details */}
-          <div className="flex flex-col bg-red-200 pl-16 w-[29rem] ml-[5rem] rounded-2xl pt-10 pb-10 gap-2 shadow-lg h-fit">
+          <div className="flex flex-col bg-red-200 pl-16 w-fit ml-[5rem] rounded-2xl pt-10 pb-10 gap-2 shadow-lg h-fit">
             <div className="flex flex-row gap-6 items-center">
               <div>
                 <p className="text-2xl font-bold mt-8">{meal.strMeal}</p>
                 <p>Category: {meal.strCategory}</p>
                 <p>Area: {meal.strArea}</p>
               </div>
-              <div className="flex flex-row ml-[6rem] w-fit border-4 border-black gap-2  bg-green-400 w-">
-                <h1 className="p-2 ">-</h1>
-                <h1 className="p-2 ">1</h1>
-                <h1 className="p-2 ">+</h1>
-              </div>
             </div>
 
-            <div className=" grid grid-cols-3 gap-4 mb-4 mt-4">
-              <button className="bg-white">rating</button>
+            <div className="grid grid-cols-3 gap-4 mb-4 mt-4">
+              <button className={`bg-white ${activeTab === "instructions" && "bg-gray-300"}`} onClick={() => setActiveTab("instructions")}>Instructions</button>
+              <button className={`bg-white ${activeTab === "ingredients" && "bg-gray-300"}`} onClick={() => setActiveTab("ingredients")}>Ingredients</button>
+              <button className={`bg-white ${activeTab === "video" && "bg-gray-300"}`} onClick={() => setActiveTab("video")}>Video</button>
+            </div>
 
-              <button className="bg-white">ingrident</button>
-              <button className="bg-white">video</button>
+            <div className="mt-4 overflow-x-hidden h-[15rem] relative">
+              {renderTabContent()}
             </div>
-            <div> 
-               <h1>About </h1>
-               <p></p>
-            </div>
-            {/* <p className="w-fit ml-5">Instructions: {meal.strInstructions}</p> */}
           </div>
         </div>
       </div>
