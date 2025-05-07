@@ -99,7 +99,7 @@ function Foods() {
   };
 
   return (
-    <div className="flex flex-row items-center bg-[#c88d84] justify-center overflow-x-hidden scroll-hidden">
+    <div className="flex flex-row items-center bg-[#c88d84] justify-center ">
       <div>
         <Sidebars />
       </div>

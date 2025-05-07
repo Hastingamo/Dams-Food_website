@@ -95,7 +95,7 @@ function CockTailss() {
   };
   return (
     <>
-      <div className="flex flex-row items-center bg-[#C88D84] justify-center overflow-x-hidden">
+      <div className="flex flex-row items-center bg-[#C88D84] justify-center">
         <div>
           <Sidebars />
         </div>
@@ -104,7 +104,7 @@ function CockTailss() {
             <MoonLoader color="black" size={100} />
           </div>
         ) : (
-          <div className="w-full min-h-screen flex flex-row bg-[#C88D84] justify-center ml-[36px] pt-10 px-4 overflow-x-hidden">
+          <div className="w-full min-h-screen flex flex-row bg-[#C88D84] justify-center ml-[36px] pt-10 px-4">
             <div>
               <Sidebars />
             </div>
