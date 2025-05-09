@@ -5,12 +5,12 @@ const DetailLayout = ({ image, title, description, details, children }) => {
   return (
     <div className="flex flex-row md:flex-row gap-8 md:p-5  min-h-screen">
       {/* {" "}<Sidebars /> */}
-      <div className="flex flex-col md:flex-row p-5 gap-8 bg-[#c88d84] w-screen">
+      <div className="relative flex flex-col md:flex-row p-5 gap-8 bg-[#c88d84] w-screen">
         <div className="flex-1 flex justify-center items-center md:hidden">
           <img
             src={image}
             alt={title}
-            className="w-1/2 max-w-sm rounded-full -mb-20 object-cover shadow-lg"
+            className="w-full max-w-sm rounded-xl  object-cover shadow-lg"
           />
         </div>
         <div className="hidden md:flex-1 md:flex md:justify-center md:items-center">
@@ -21,7 +21,7 @@ const DetailLayout = ({ image, title, description, details, children }) => {
           />
         </div>
 
-        <div className="flex-1 flex flex-col gap-4th rounded-3xl bg-[#e4c2bd] px-10 pt-3 md:hidden">
+        <div className="flex-1 flex flex-col gap-4th rounded-3xl w-full bg-[#e4c2bd] px-10 pt-3 md:hidden">
           <h1 className="text-2xl font-bold mt-20">{title}</h1>
           <p className="text-gray-600">{description}</p>
 
