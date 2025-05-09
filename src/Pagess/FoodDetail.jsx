@@ -6,6 +6,7 @@ function FoodDetail() {
     <>
         <div className='md:hidden  h-full w-screen bg-amber-200'><FoodDetails/></div>
         <div className='hidden md:h-full md:w-screen md:bg-amber-800'></div>
+
     </>
   )
 }
