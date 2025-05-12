@@ -156,6 +156,7 @@ function Foods() {
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   whileHover={{
                     scale: 1.05,
                     shadow: "0 4px 20px rgba(0, 0, 0, 0.2), ",
