@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 const DetailLayout = ({
   image,
   title,
@@ -11,22 +12,36 @@ const DetailLayout = ({
 }) => {
   return (
     <div className="flex flex-row min-h-screen">
-      {/* Sidebar */}
+      <div className="flex flex-col md:flex-row p-5 gap-8 bg-[rgb(249,249,249)] rounded-xl  flex-1">
+          <div className="hidden md:flex w-full gap-8">
+            <motion.div
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1 }}
+              initial={{ opacity: 0, scale: 0.8, y: 130 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="flex-1 p-8 bg-blue-300 rounded-xl shadow-md"
+            >
+              <h1 className="text-2xl font-bold mt-20">{title}</h1>
+              <p className="text-gray-600">{description}</p>
 
-      {/* Main Content */}
-      <div className="flex flex-col md:flex-row p-5 gap-8 bg-[#f9f9f9] rounded-xl  flex-1">
-        {/* Tablet View */}
-        <div className="hidden md:flex w-full gap-8">
-          {/* Left Section - Description and Details */}
-          <div className="flex-1 p-8  bg-blue-300 rounded-xl shadow-md">
-            <h1 className="text-2xl font-bold mt-20">{title}</h1>
-            <p className="text-gray-600">{description}</p>
+              <div className="mt-4">{children}</div>
+            </motion.div>
 
-            <div className="mt-4">{children}</div>
+            {/* Right Section - Image Display */}
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              className="flex-1 flex justify-center items-start"
+            >
+              <img
+                src={image}
+                alt={title}
+                className="w-96 h-96 object-cover flex shadow-lg"
+              />
+            </motion.div>
           </div>
-
-
-          {/* Right Section - Image Display */}
           <div className="flex-1 flex justify-center items-start ">
             <img
               src={image}
@@ -60,7 +75,6 @@ const DetailLayout = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

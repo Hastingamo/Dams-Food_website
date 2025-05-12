@@ -71,6 +71,7 @@ function FoodDetails() {
               <p className="p-2">1</p>
               <button className="p-2 border">+</button>
             </div>
+           <h1>choose you location</h1>
             <button className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5">
               Add to Cart
             </button>
