@@ -33,12 +33,12 @@ const DetailLayout = ({
             transition={{ duration: 1 }}
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="flex-1 flex justify-center items-start "
-          >
+            className="flex-1 flex justify-center items-center sticky top-10 h-[calc(100vh-5rem)]"
+            >
             <img
               src={image}
               alt={title}
-              className="w-96 h-96 object-cover flex shadow-lg"
+              className="w-96 h-96 object-cover sticky flex shadow-lg"
             />
           </motion.div>
         </div>
