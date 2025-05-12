@@ -3,6 +3,7 @@ import Sidebars from "../Component/Sidebars.jsx";
 import Cock from "../Component/Cock.jsx";
 import { motion } from "framer-motion";
 import { MoonLoader } from "react-spinners";
+import { Link } from "react-router";
 
 function CockTailss() {
   const [loading, setLoading] = useState(true);
@@ -154,7 +155,8 @@ function CockTailss() {
                     key={drink.idDrink}
                     transition={{ duration: 1, delay: index * 0.05 }}
                     className="bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50 rounded-lg shadow-md hover:shadow-lg transition"
-                  >
+                  > 
+                    <Link to={`/cocktails/${drink.idDrink}`}>
                     <img
                       src={drink.strDrinkThumb}
                       alt={drink.strDrink}
@@ -163,6 +165,7 @@ function CockTailss() {
                     <h2 className="text-xl font-semibold flex justify-center text-center pb-5">
                       {drink.strDrink}
                     </h2>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
