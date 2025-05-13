@@ -39,7 +39,7 @@ function Home() {
         </div>
       ) : (
         <>
-          <div className="flex flex-row w-full h-full">
+          <div className="flex flex-row w-full h-screen">
             {/* Left Section */}
             <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-6">
               <div className="shadow-2xl h-full pt-10 gap-3">
@@ -72,7 +72,7 @@ function Home() {
                     <img
                       src={featuredImage.strMealThumb}
                       alt={featuredImage.strMeal}
-                      className="w-[20rem] h-auto rounded-lg shadow-lg mt-4"
+                      className="w-[30rem] h-auto rounded-full shadow-lg mt-4"
                     />
                     <h2 className="text-xl font-bold mt-2">
                       {featuredImage.strMeal}
