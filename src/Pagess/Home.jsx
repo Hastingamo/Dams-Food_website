@@ -65,6 +65,18 @@ function Home() {
                   <p className="text-gray-600">
                     This is a simple food mood application.
                   </p>
+                  {featuredImage ? (
+                    <div
+                      key={featuredImage.idMeal}
+                      className="flex flex-col items-center"
+                    >
+                      <h2 className="text-xl font-bold mt-2">
+                        {featuredImage.strMeal}
+                      </h2>
+                    </div>
+                  ) : (
+                    <p>No Image Available</p>
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -93,9 +105,7 @@ function Home() {
                       alt={featuredImage.strMeal}
                       className="w-[10rem] md:w-[30rem] h-auto rounded-full shadow-lg mt-4"
                     />
-                    <h2 className="text-xl font-bold mt-2">
-                      {featuredImage.strMeal}
-                    </h2>
+             
                   </div>
                 ) : (
                   <p>No Image Available</p>
