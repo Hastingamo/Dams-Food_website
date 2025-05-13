@@ -54,7 +54,7 @@ function CockDetails() {
             </button>
           </div>
         );
-            case "video":
+      case "video":
         return cockTailss.strYoutube ? (
           <div>
             <h2 className="text-lg font-semibold">Video Instructions:</h2>
@@ -63,14 +63,15 @@ function CockDetails() {
               width="100%"
               height="315"
               src={cockTailss.strYoutube.replace("watch?v=", "embed/")}
-              title={cockTailss.strMeal}
+              title={cockTailss.strDrink}
               allowFullScreen
             ></iframe>
           </div>
         ) : (
           <p>No video available.</p>
         );
-        default:
+
+      default:
         const steps = cockTailss.strInstructions.split(/\.(?=\s[A-Z])/);
         return (
           <div>
