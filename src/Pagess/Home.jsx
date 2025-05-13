@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebars from "../Component/Sidebars";
 import { MoonLoader } from "react-spinners";
+import { motion } from "framer-motion";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,8 @@ function Home() {
           setImage(data.meals);
 
           // Pick a random image from the array
-          const randomImage = data.meals[Math.floor(Math.random() * data.meals.length)];
+          const randomImage =
+            data.meals[Math.floor(Math.random() * data.meals.length)];
           setFeaturedImage(randomImage);
         }
       })
@@ -42,11 +44,17 @@ function Home() {
           <div className="flex flex-row w-full h-screen">
             {/* Left Section */}
             <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-6">
-              <div className="shadow-2xl h-full pt-10 gap-3">
+              <motion.div
+                animate={{ opacity: 1, x: 20, scale: 1 }}
+                transition={{ duration: 2 }}
+                initial={{ opacity: 0, scale: 0.8, x: -130 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                className="shadow-2xl h-full pt-20 md:pt-30 lg:pt-48 xl:pt-10 gap-3"
+              >
                 <h1 className="text-6xl md:text-8xl font-bold ml-4 text-white w-fit">
                   Food{" "}
                 </h1>
-                <p className="text-white ml-4">is your good </p>
+                <p className="text-white ml-4 md:text-2xl">is your good </p>
                 <h1 className="text-6xl md:text-8xl font-bold ml-4 text-white w-fit">
                   Mood
                 </h1>
@@ -58,21 +66,32 @@ function Home() {
                     This is a simple food mood application.
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Right Section */}
             <div className="w-1/3 bg-pink-200 pt-6 pr-8">
-              <div className="pl-10 shadow-2xl h-full flex justify-center items-center">
+              <motion.div
+                animate={{ opacity: 1, x: 20, scale: 1 }}
+                transition={{ duration: 2 }}
+                exit={{ x: "100vw", opacity: 0 }}
+                initial={{ x: "100vw", opacity: 0 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                className="pl-10 pt-30 md:pt-30 xl:pt-10 shadow-2xl h-full "
+              >
                 {featuredImage ? (
                   <div
                     key={featuredImage.idMeal}
-                    className="flex flex-col -ml-[40rem] items-center"
+                    className="flex flex-col -ml-[8rem] md:-ml[10rem] lg: xl:-ml-[40rem] items-center"
                   >
-                    <img
+                    <motion.img
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1 }}
+                      initial={{ opacity: 0, y: -50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       src={featuredImage.strMealThumb}
                       alt={featuredImage.strMeal}
-                      className="w-[30rem] h-auto rounded-full shadow-lg mt-4"
+                      className="w-[10rem] md:w-[30rem] h-auto rounded-full shadow-lg mt-4"
                     />
                     <h2 className="text-xl font-bold mt-2">
                       {featuredImage.strMeal}
@@ -81,7 +100,7 @@ function Home() {
                 ) : (
                   <p>No Image Available</p>
                 )}
-              </div>
+              </motion.div>
             </div>
           </div>
         </>
