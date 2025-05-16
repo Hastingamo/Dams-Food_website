@@ -9,7 +9,6 @@ function Home() {
   const [featuredImage, setFeaturedImage] = useState(null);
 
   useEffect(() => {
-    // Fetching data from the API
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
       .then((response) => response.json())
       .then((data) => {
@@ -24,7 +23,6 @@ function Home() {
       })
       .catch((error) => console.error("Error fetching data:", error));
 
-    // Timeout for loader simulation
     const timer = setTimeout(() => {
       setLoading(false);
     }, 3000);
@@ -41,11 +39,11 @@ function Home() {
         </div>
       ) : (
         <>
-          <div className="flex flex-row w-full h-screen">
+          <div className="flex flex-row w-full h-[40rem] md:h-screen lg:h-[37rem]">
             {/* Left Section */}
             <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-6">
               <motion.div
-                animate={{ opacity: 1, x: 20, scale: 1 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
                 initial={{ opacity: 0, scale: 0.8, x: -130 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -84,7 +82,7 @@ function Home() {
             {/* Right Section */}
             <div className="w-1/3 bg-pink-200 pt-6 pr-8">
               <motion.div
-                animate={{ opacity: 1, x: 20, scale: 1 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
                 exit={{ x: "100vw", opacity: 0 }}
                 initial={{ x: "100vw", opacity: 0 }}
