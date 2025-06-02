@@ -2,9 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Logins from "../auth/Logins.js";
 import Sidebars from "../Component/Sidebars.jsx";
-import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faTimes,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { motion } from "framer-motion";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
@@ -64,96 +68,129 @@ function Login(props) {
       errRef.current?.focus();
     }
     // console.log("Trying to login with", email, pwd);
-
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row  h-screen w-full  overflow-hidden">
       <Sidebars />
-      <section className="ml-[86px] px-4 w-[40rem] h-fit bg-gradient-to-r from-blue-500 to-blue-300 rounded-lg shadow-lg">
-        <p
-          ref={errRef}
-          className={errMsg ? "errmsg" : "offscreen"}
-          aria-live="assertive"
-          tabIndex={-1}
-        >
-          {errMsg}
-        </p>
-
-        <h1 className="text-2xl font-bold">Login</h1>
-
-        <form onSubmit={handleLogin}>
-          <label htmlFor="email">
-            Email:
-            <div className="inline-block ml-2">
-              {email && validEmail && <FontAwesomeIcon icon={faCheck} className="text-green-500" />}
-              {email && !validEmail && <FontAwesomeIcon icon={faTimes} className="text-red-500" />}
-            </div>
-          </label>
-          <input
-            type="email"
-            id="email"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            required
-            aria-invalid={validEmail ? "false" : "true"}
-            aria-describedby="emailnote"
-            onFocus={() => setEmailFocus(true)}
-            onBlur={() => setEmailFocus(false)}
-            className="mt-2 p-2 border rounded w-full"
-          />
-          {email && !validEmail && (
-            <p id="emailnote" className="text-white bg-black text-sm mt-1">
-              <FontAwesomeIcon icon={faInfoCircle} /> Please enter a valid email address.
-            </p>
-          )}
-
-          <label htmlFor="password" className="mt-4 block">
-            Password:
-            <div className="inline-block ml-2">
-              {pwd && validPwd && <FontAwesomeIcon icon={faCheck} className="text-green-500" />}
-              {pwd && !validPwd && <FontAwesomeIcon icon={faTimes} className="text-red-500" />}
-            </div>
-          </label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPwd(e.target.value)}
-            value={pwd}
-            required
-            aria-invalid={validPwd ? "false" : "true"}
-            aria-describedby="pwdnote"
-            onFocus={() => setPwdFocus(true)}
-            onBlur={() => setPwdFocus(false)}
-            className="mt-2 p-2 border rounded w-full"
-          />
-          {pwd && !validPwd && (
-            <p
-              id="pwdnote"
-              className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-            >
-              <FontAwesomeIcon icon={faInfoCircle} />
-              8 to 24 characters. Must include uppercase and lowercase letters, a number, and a special character.
-            </p>
-          )}
-        {/* {error && <p>{errMsg}</p>} */}
-          <button
-            type="submit"
-            className="mt-4 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
-            disabled={!validEmail || !validPwd}
+      <div className="flex w-2/3  justify-center items-center p-8">
+        <section className="ml-[86px] w-full max-w-md h-screen rounded-lg ">
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+            tabIndex={-1}
           >
-            Login
-          </button>
-          {}
-        </form>
+            {errMsg}
+          </p>
 
-        <p className="mt-4">Don't have an account yet?</p>
-        <button onClick={props.toggleSignUp} className="text-blue-600 underline">
-          Signup
-        </button>
-      </section>
+          <h1 className="text-center text-5xl mt-5">Login</h1>
+
+          <form onSubmit={handleLogin} className="mt-10">
+            <label htmlFor="email">
+              Email:
+              <div className="inline-block ml-2">
+                {email && validEmail && (
+                  <FontAwesomeIcon icon={faCheck} className="text-green-500" />
+                )}
+                {email && !validEmail && (
+                  <FontAwesomeIcon icon={faTimes} className="text-red-500" />
+                )}
+              </div>
+            </label>
+            <input
+              type="email"
+              id="email"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              required
+              aria-invalid={validEmail ? "false" : "true"}
+              aria-describedby="emailnote"
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
+              className="mt-2 p-2 border rounded w-full"
+            />
+            {email && !validEmail && (
+              <p id="emailnote" className="text-white bg-black text-sm mt-1">
+                <FontAwesomeIcon icon={faInfoCircle} /> Please enter a valid
+                email address.
+              </p>
+            )}
+
+            <label htmlFor="password" className="mt-4 block">
+              Password:
+              <div className="inline-block ml-2">
+                {pwd && validPwd && (
+                  <FontAwesomeIcon icon={faCheck} className="text-green-500" />
+                )}
+                {pwd && !validPwd && (
+                  <FontAwesomeIcon icon={faTimes} className="text-red-500" />
+                )}
+              </div>
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+              aria-invalid={validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+              className="mt-2 p-2 border rounded w-full"
+            />
+            {pwd && !validPwd && (
+              <p
+                id="pwdnote"
+                className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
+              >
+                <FontAwesomeIcon icon={faInfoCircle} />8 to 24 characters. Must
+                include uppercase and lowercase letters, a number, and a special
+                character.
+              </p>
+            )}
+            {/* {error && <p>{errMsg}</p>} */}
+            <button
+              type="submit"
+              className="mt-4 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded flex justify-center ml-10 items-center w-1/2"
+              disabled={!validEmail || !validPwd}
+            >
+              Login
+            </button>
+            {}
+          </form>
+
+          <p className="mt-4 text-center">Don't have an account yet?</p>
+          <button
+            onClick={props.toggleSignUp}
+            className="text-blue-600 underline"
+          >
+            Signup
+          </button>
+        </section>
+      </div>
+
+      <div className="flex w-2/6 h-screen">
+        <motion.div
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 2 }}
+          initial={{ opacity: 0, scale: 0.8, x: -730 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          className="flex-1  bg-blue-300 rounded-xl shadow-md "
+        >
+          <h1 className="text-2xl font-bold mt-20">Welcome Back!</h1>
+          <p className="text-gray-600">enter your personal detail and start your journey</p>
+          <button
+            onClick={props.toggleSignUp}
+            className=" underline mt-4 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded flex justify-center items-center w-1/2"
+          >
+            Signup
+          </button>
+        </motion.div>
+      </div>
     </div>
   );
 }

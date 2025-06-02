@@ -63,14 +63,14 @@ const DetailLayout = ({
           <img
             src={image}
             alt={title}
-            className="flex justify-center items-center sticky top-10  rounded-2xl w-full max-w-sm mt-[2rem]"          />
+            className="flex justify-center items-center  top-10  rounded-2xl w-full  mt-[2rem]"          />
         </motion.div>
         <motion.div
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1 }}
           initial={{ opacity: 0, scale: 0.8, y: 130 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex-1 flex flex-col gap-4 rounded-3xl w-full mt-20 bg-[#e4c2bd] px-10 pt-3"
+          className="flex-1 flex flex-col gap-4 rounded-3xl w-full -mt-24 bg-[#e4c2bd] px-10 pt-3"
         >
           <h1 className="text-2xl font-bold mt-20">{title}</h1>
           <p className="text-gray-600">{description}</p>
