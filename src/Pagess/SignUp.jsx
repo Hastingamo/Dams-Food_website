@@ -112,9 +112,14 @@ function SignUp(props) {
             </button>
           </motion.div>
         </div>
-        <div className="flex w-2/3  justify-center items-center p-8">
+        <motion.div 
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ duration: 2 }}
+          initial={{ opacity: 0, scale: 0.8, x: -730 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+        className="flex w-2/3  justify-center items-center p-8">
           {" "}
-          <section className="ml-[86px] w-full max-w-md h-fit ">
+      <section className="w-full max-w-md h-fit">
             <p
               ref={errRef}
               className={errMsg ? "errmsg text-red-600" : "offscreen"}
@@ -259,7 +264,7 @@ function SignUp(props) {
               </span>
             </p>
           </section>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
