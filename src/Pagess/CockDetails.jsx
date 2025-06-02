@@ -54,40 +54,41 @@ function CockDetails() {
             </button>
           </div>
         );
-      case "video":
-        return cockTailss.strYoutube ? (
-          <div>
-            <h2 className="text-lg font-semibold">Video Instructions:</h2>
-            <iframe
-              className="mt-4"
-              width="100%"
-              height="315"
-              src={cockTailss.strYoutube.replace("watch?v=", "embed/")}
-              title={cockTailss.strDrink}
-              allowFullScreen
-            ></iframe>
-          </div>
-        ) : (
-          <p>No video available.</p>
-        );
+      }
+      // case "video":
+      //   return cockTailss.strYoutube ? (
+      //     <div>
+      //       <h2 className="text-lg font-semibold">Video Instructions:</h2>
+      //       <iframe
+      //         className="mt-4"
+      //         width="100%"
+      //         height="315"
+      //         src={cockTailss.strYoutube.replace("watch?v=", "embed/")}
+      //         title={cockTailss.strDrink}
+      //         allowFullScreen
+      //       ></iframe>
+      //     </div>
+      //   ) : (
+      //     <p>No video available.</p>
+      //   );
 
-      default:
-        const steps = cockTailss.strInstructions.split(/\.(?=\s[A-Z])/);
-        return (
-          <div>
-            <h2 className="text-lg font-semibold">
-              Instructions (Step by Step):
-            </h2>
-            <ul className="list-decimal pl-5">
-              {steps.map((step, index) => (
-                <li key={index} className="mb-2">
-                  {step.trim()}
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
-    }
+      // default:
+    //     const steps = cockTailss.strInstructions.split(/\.(?=\s[A-Z])/);
+    //     return (
+    //       <div>
+    //         <h2 className="text-lg font-semibold">
+    //           Instructions (Step by Step):
+    //         </h2>
+    //         <ul className="list-decimal pl-5">
+    //           {steps.map((step, index) => (
+    //             <li key={index} className="mb-2">
+    //               {step.trim()}
+    //             </li>
+    //           ))}
+    //         </ul>
+    //       </div>
+    //     );
+    // }
   };
   return (
     <DetailLayout
@@ -96,14 +97,14 @@ function CockDetails() {
       description={`Category: ${cockTailss.strCategory} `}
     >
       <div className="flex gap-4 mb-4">
-        <button
+        {/* <button
           className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
             activeTab === "instructions" ? "bg-gray-300" : ""
           }`}
           onClick={() => setActiveTab("instructions")}
         >
           Instructions
-        </button>
+        </button> */}
         <button
           className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
             activeTab === "order" ? "bg-gray-300" : ""
@@ -112,14 +113,14 @@ function CockDetails() {
         >
           Place Order
         </button>
-        <button
+        {/* <button
           className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
             activeTab === "video" ? "bg-gray-300" : ""
           }`}
           onClick={() => setActiveTab("video")}
         >
           Video
-        </button>
+        </button> */}
       </div>
       <div>{renderTabContent()}</div>
     </DetailLayout>

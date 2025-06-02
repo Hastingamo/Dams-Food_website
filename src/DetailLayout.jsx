@@ -63,8 +63,7 @@ const DetailLayout = ({
           <img
             src={image}
             alt={title}
-            className="w-full max-w-sm mt-[2rem] rounded-xl object-cover shadow-lg"
-          />
+            className="flex justify-center items-center sticky top-10  rounded-2xl w-full max-w-sm mt-[2rem]"          />
         </motion.div>
         <motion.div
           animate={{ opacity: 1, y: 0, scale: 1 }}

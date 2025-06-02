@@ -153,9 +153,9 @@ const Sidebars = () => {
             className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/Dashboard")}
           >
-            AddToFavorite
+           Profile
           </h1>
 
         </div>
