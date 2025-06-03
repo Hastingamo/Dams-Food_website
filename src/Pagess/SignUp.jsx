@@ -88,11 +88,11 @@ function SignUp(props) {
 
   return (
     <div className="flex flex-row  h-screen w-full  overflow-hidden">
-      <div className="fixed top-0 left-0 h-full w-[86px] z-10">
+      <div className="fixed top-0 left-0 h-fit w-[86px] z-10">
         <Sidebars />
       </div>{" "}
-      <div className="ml-[86px] flex h-full w-[calc(100%-86px)]">
-        <div className="flex  w-4/12 h-screen">
+      <div className="ml-[86px] flex  w-[calc(100%-86px)]">
+        <div className="flex  w-4/12 h-screen gap-4">
           <motion.div
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 2 }}
@@ -100,26 +100,30 @@ function SignUp(props) {
             whileInView={{ opacity: 1, scale: 1 }}
             className="flex-1  bg-blue-300 rounded-xl shadow-md "
           >
-            <h1 className="text-2xl font-bold mt-20 ">Welcome Back!</h1>
-            <p className="text-gray-600">
-              enter your personal detail and start your journey
+            <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold mt-20 md:mt-32 lg:mt-40 text-center">
+              Welcome Back!
+            </h1>
+            <p className="text-gray-600 text-[15px] md:text-[18px] lg:text-2xl text-center mt-4 md:mt-8">
+              enter your personal <br/>detail and <br/>start your journey
             </p>
+            <p className="text-[15px] mt-8 md:text-[18px] lg:text-2xl text-center"> Already registered?</p>
             <button
               onClick={props.toggleLogin}
-              className=" underline mt-4 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded flex justify-center items-center w-1/2"
+              className=" underline mt-4 ml-4 md:ml-8 lg:ml-12 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded flex justify-center items-center w-1/2"
             >
-              Signup
+              Signin
             </button>
           </motion.div>
         </div>
-        <motion.div 
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
+        <motion.div
+          animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: -730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-        className="flex w-2/3  justify-center items-center p-8">
+          className="flex w-2/3   p-8 "
+        >
           {" "}
-      <section className="w-full max-w-md h-fit">
+          <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] ">
             <p
               ref={errRef}
               className={errMsg ? "errmsg text-red-600" : "offscreen"}
@@ -127,10 +131,17 @@ function SignUp(props) {
             >
               {errMsg}
             </p>
-            <h1 className="text-2xl font-bold">Sign Up</h1>
-            <form onSubmit={handleSignOut}>
+            <h1 className="text-4xl md:text-6xl font-bold text-center xl:text-5xl">
+              Sign Up
+            </h1>
+            <form
+              onSubmit={handleSignOut}
+              className="flex flex-col gap-1 md:gap-2 xl:gap-0.5 pt-4"
+            >
               {/* Username */}
-              <label htmlFor="username">Username:</label>
+              <label htmlFor="username" className="md:text-2xl ">
+                Username:
+              </label>
               <div className="inline-block ml-2">
                 {user && validName && (
                   <FontAwesomeIcon icon={faCheck} className="text-green-500" />
@@ -150,7 +161,7 @@ function SignUp(props) {
                 aria-invalid={!validName}
                 onFocus={() => setUserFocus(true)}
                 onBlur={() => setUserFocus(false)}
-                className="mt-2 p-2 border rounded w-full"
+                className="mt-2 p-2 border rounded w-full text-2xl"
               />
               {user && !validName && (
                 <p id="uidnote" className="text-white bg-black text-sm mt-1">
@@ -160,7 +171,9 @@ function SignUp(props) {
               )}
 
               {/* Email */}
-              <label htmlFor="email">Email:</label>
+              <label htmlFor="email" className="md:text-2xl">
+                Email:
+              </label>
               <div className="inline-block ml-2">
                 {email && validEmail && (
                   <FontAwesomeIcon icon={faCheck} className="text-green-500" />
@@ -179,7 +192,7 @@ function SignUp(props) {
                 aria-invalid={!validEmail}
                 onFocus={() => setEmailFocus(true)}
                 onBlur={() => setEmailFocus(false)}
-                className="mt-2 p-2 border rounded w-full"
+                className="mt-2 p-2 border rounded w-full text-2xl"
               />
               {email && !validEmail && (
                 <p id="emailnote" className="text-white bg-black text-sm mt-1">
@@ -189,7 +202,9 @@ function SignUp(props) {
               )}
 
               {/* Password */}
-              <label htmlFor="password">Password:</label>
+              <label htmlFor="password" className="md:text-2xl">
+                Password:
+              </label>
               <div className="inline-block ml-2">
                 {pwd && validPwd && (
                   <FontAwesomeIcon icon={faCheck} className="text-green-500" />
@@ -207,7 +222,7 @@ function SignUp(props) {
                 aria-invalid={!validPwd}
                 onFocus={() => setPwdFocus(true)}
                 onBlur={() => setPwdFocus(false)}
-                className="mt-2 p-2 border rounded w-full"
+                className="mt-2 p-2 border rounded w-full md:text-2xl"
               />
               {pwd && !validPwd && (
                 <p id="pwdnote" className="text-white bg-black text-sm mt-1">
@@ -218,7 +233,9 @@ function SignUp(props) {
               )}
 
               {/* Confirm Password */}
-              <label htmlFor="confirm_pwd">Confirm Password:</label>
+              <label htmlFor="confirm_pwd" className="md:text-2xl">
+                Confirm Password:
+              </label>
               <div className="inline-block ml-2">
                 {matchPwd && validMatch && (
                   <FontAwesomeIcon icon={faCheck} className="text-green-500" />
@@ -234,7 +251,7 @@ function SignUp(props) {
                 value={matchPwd}
                 required
                 aria-invalid={!validMatch}
-                className="mt-2 p-2 border rounded w-full"
+                className="mt-2 p-2 border rounded w-full md:text-2xl"
               />
               {matchPwd && !validMatch && (
                 <p
@@ -253,16 +270,6 @@ function SignUp(props) {
                 Sign up
               </button>
             </form>
-            <p className="mt-4 text-white">
-              Already registered?
-              <br />
-              <span
-                className="underline cursor-pointer text-black"
-                onClick={props.toggleLogin}
-              >
-                Sign In
-              </span>
-            </p>
           </section>
         </motion.div>
       </div>
