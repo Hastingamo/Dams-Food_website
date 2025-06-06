@@ -70,7 +70,7 @@ const DetailLayout = ({
           transition={{ duration: 1 }}
           initial={{ opacity: 0, scale: 0.8, y: 130 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex-1 flex flex-col gap-4 rounded-3xl  bg-[#e4c2bd] px-10 pt-3"
+          className="flex-1 flex flex-col gap-4 w-screen rounded-3xl  bg-[#e4c2bd] px-10 pt-3"
         >
           <h1 className="text-2xl font-bold mt-20">{title}</h1>
           <p className="text-gray-600">{description}</p>

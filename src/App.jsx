@@ -10,6 +10,7 @@ import Login from "./Pagess/Login";
 import Authentication from "./Pagess/Authentication";
 import Dashboard from "./Pagess/Dashboard";
 import PrivateLayOut from "./PrivateLayOut";
+import AddTochart from "./Pagess/AddTochart";
 function App() {
   return (
     <>
@@ -35,6 +36,7 @@ function App() {
             <Route path="/cocktails/:id" element={<CockDetails />} />
             <Route path="/food/:id" element={<FoodDetials />} />
             <Route path="/foodDetails" element={<FoodDetials />} />
+            <Route path="AddToChart" element={<AddTochart/>} />
           </Route>
           {/* Add more routes as needed */}
         </Routes>

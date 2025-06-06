@@ -120,7 +120,7 @@ function SignUp(props) {
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: -730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex w-2/3   p-8 "
+          className="flex w-2/3  p-8  xl:p-0 "
         >
           {" "}
           <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] ">

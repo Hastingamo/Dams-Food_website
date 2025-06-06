@@ -14,6 +14,12 @@ function FoodDetails() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("instructions");
 
+  const getRandomPrice = (id) => {
+    const base = parseInt(id.slice(-3), 10) || Math.floor(Math.random() * 100);
+    const price = 5 + (base % 15);
+    return Math.round(price); 
+  };
+
   useEffect(() => {
     const fetchMealDetails = async () => {
       try {
@@ -25,6 +31,7 @@ function FoodDetails() {
 
         if (data.meals && data.meals.length > 0) {
           const mealData = data.meals[0];
+          mealData.randomPrice = getRandomPrice(mealData.idMeal); // ✅ Assign price
           setMeal(mealData);
 
           const query = `"${mealData.strMeal} food"`;
@@ -65,6 +72,9 @@ function FoodDetails() {
         return (
           <div>
             <h2 className="text-lg font-semibold">Order:</h2>
+            <h2 className="text-lg font-semibold text-black-600">
+              Price: ${meal.randomPrice}
+            </h2>
             <div className="flex gap-2 mt-2">
               <button className="p-2 border">-</button>
               <p className="p-2">1</p>

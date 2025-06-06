@@ -9,6 +9,13 @@ function CockDetails() {
   const [mealImages, setMealImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("instructions");
+
+  const getRandomPrice = (id) => {
+    const base = parseInt(id.slice(-3), 10) || Math.floor(Math.random() * 100);
+    const price = 5 + (base % 15);
+    return Math.round(price); 
+  };
+
   useEffect(() => {
     const fetchCocktailDetails = async () => {
       try {
@@ -19,6 +26,7 @@ function CockDetails() {
         const data = await res.json();
         if (data.drinks && data.drinks.length > 0) {
           const mealData = data.drinks[0];
+          mealData.randomPrice = getRandomPrice(mealData.idDrink);
           setcockTailss(mealData);
         }
       } catch (error) {
@@ -29,6 +37,7 @@ function CockDetails() {
     };
     fetchCocktailDetails();
   }, [id]);
+
   if (loading)
     return (
       <div className="flex justify-center items-center h-screen">
@@ -38,10 +47,31 @@ function CockDetails() {
   if (!cockTailss) return <p>Cocktail not found.</p>;
   const renderTabContent = () => {
     switch (activeTab) {
-      case "order":
-        return (
+    
+    //ase "video":
+    //   return cockTailss.strYoutube ? (
+    //     <div>
+    //       <h2 className="text-lg font-semibold">Video Instructions:</h2>
+    //       <iframe
+    //         className="mt-4"
+    //         width="100%"
+    //         height="315"
+    //         src={cockTailss.strYoutube.replace("watch?v=", "embed/")}
+    //         title={cockTailss.strDrink}
+    //         allowFullScreen
+    //       ></iframe>
+    //     </div>
+    //   ) : (
+    //     <p>No video available.</p>
+    //   );
+
+    default:
+             return (
           <div>
             <h2 className="text-lg font-semibold">Order:</h2>
+            <h2 className="text-lg font-semibold text-black-600">
+              Price: ${cockTailss.randomPrice}
+            </h2>
             <div className="flex gap-2 mt-2">
               <button className="p-2 border">-</button>
               <p className="p-2">1</p>
@@ -54,42 +84,8 @@ function CockDetails() {
             </button>
           </div>
         );
-      }
-      // case "video":
-      //   return cockTailss.strYoutube ? (
-      //     <div>
-      //       <h2 className="text-lg font-semibold">Video Instructions:</h2>
-      //       <iframe
-      //         className="mt-4"
-      //         width="100%"
-      //         height="315"
-      //         src={cockTailss.strYoutube.replace("watch?v=", "embed/")}
-      //         title={cockTailss.strDrink}
-      //         allowFullScreen
-      //       ></iframe>
-      //     </div>
-      //   ) : (
-      //     <p>No video available.</p>
-      //   );
-
-      // default:
-    //     const steps = cockTailss.strInstructions.split(/\.(?=\s[A-Z])/);
-    //     return (
-    //       <div>
-    //         <h2 className="text-lg font-semibold">
-    //           Instructions (Step by Step):
-    //         </h2>
-    //         <ul className="list-decimal pl-5">
-    //           {steps.map((step, index) => (
-    //             <li key={index} className="mb-2">
-    //               {step.trim()}
-    //             </li>
-    //           ))}
-    //         </ul>
-    //       </div>
-    //     );
-    // }
   };
+}
   return (
     <DetailLayout
       image={cockTailss.strDrinkThumb}

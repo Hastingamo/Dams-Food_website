@@ -41,7 +41,7 @@ function Home() {
         <>
           <div className="flex flex-row w-full h-[40rem] md:h-screen lg:h-[37rem]">
             {/* Left Section */}
-            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-6">
+            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 ">
               <motion.div
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}

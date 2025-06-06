@@ -7,7 +7,7 @@ const Sidebars = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen z-10 bg-[#e4c2bd] transition-all duration-300 ${
+      className={`fixed top-0 left-0 h-[50rem] md:h-screen z-10 bg-[#e4c2bd] transition-all duration-300 ${
         isOpen ? "w-64" : "w-20"
       }`}
     >
@@ -173,9 +173,9 @@ const Sidebars = () => {
             className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/AddToChart")}
           >
-            safe item
+            cart
           </h1>
 
         </div>

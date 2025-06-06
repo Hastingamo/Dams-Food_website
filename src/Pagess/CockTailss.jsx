@@ -126,6 +126,7 @@ function CockTailss() {
                     key={index}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 1, delay: index * 0.05 }}
                     className={`px-3 py-1 rounded border ${
                       selectedCategory === cat.strCategory
