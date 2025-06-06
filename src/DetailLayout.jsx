@@ -12,7 +12,8 @@ const DetailLayout = ({
 }) => {
   return (
     <div className="flex flex-row min-h-screen">
-      <div className="flex flex-col md:flex-row p-5 gap-8 bg-[rgb(249,249,249)] rounded-xl  flex-1">
+      <div className="flex flex-col md:flex-col p-5 gap-8 bg-[rgb(249,249,249)] rounded-xl  flex-1 ">
+        
         <div className="hidden md:flex w-full gap-8">
           <motion.div
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -35,6 +36,7 @@ const DetailLayout = ({
             whileInView={{ opacity: 1, y: 0 }}
             className="flex-1 flex justify-center items-center sticky top-10 h-[calc(100vh-5rem)]"
             >
+
             <img
               src={image}
               alt={title}

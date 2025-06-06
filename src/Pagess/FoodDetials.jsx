@@ -17,7 +17,7 @@ function FoodDetails() {
   const getRandomPrice = (id) => {
     const base = parseInt(id.slice(-3), 10) || Math.floor(Math.random() * 100);
     const price = 5 + (base % 15);
-    return Math.round(price); 
+    return Math.round(price);
   };
 
   useEffect(() => {
@@ -82,9 +82,15 @@ function FoodDetails() {
             </div>
             <h1>choose you location</h1>
 
-            <button className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5">
+            <img
+              src="Images/leftArror.png bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5"
+              className="w-4 h-4"
+              alt=""
+              srcset=""
+            >
+              {" "}
               Add to Cart
-            </button>
+            </img>
           </div>
         );
       case "video":
@@ -123,41 +129,43 @@ function FoodDetails() {
   };
 
   return (
-    <DetailLayout
-      image={meal.strMealThumb}
-      title={meal.strMeal}
-      description={`Category: ${meal.strCategory} | Area: ${meal.strArea}`}
-      details={[]}
-    >
-      <div className="flex gap-4 mb-4">
-        <button
-          className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-            activeTab === "instructions" ? "bg-gray-300" : ""
-          }`}
-          onClick={() => setActiveTab("instructions")}
-        >
-          Instructions
-        </button>
-        <button
-          className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-            activeTab === "order" ? "bg-gray-300" : ""
-          }`}
-          onClick={() => setActiveTab("order")}
-        >
-          Place Order
-        </button>
-        <button
-          className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-            activeTab === "video" ? "bg-gray-300" : ""
-          }`}
-          onClick={() => setActiveTab("video")}
-        >
-          Video
-        </button>
-      </div>
+    <>
+      <DetailLayout
+        image={meal.strMealThumb}
+        title={meal.strMeal}
+        description={`Category: ${meal.strCategory} | Area: ${meal.strArea}`}
+        details={[]}
+      >
+        <div className="flex gap-4 mb-4">
+          <button
+            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+              activeTab === "instructions" ? "bg-gray-300" : ""
+            }`}
+            onClick={() => setActiveTab("instructions")}
+          >
+            Instructions
+          </button>
+          <button
+            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+              activeTab === "order" ? "bg-gray-300" : ""
+            }`}
+            onClick={() => setActiveTab("order")}
+          >
+            Place Order
+          </button>
+          <button
+            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+              activeTab === "video" ? "bg-gray-300" : ""
+            }`}
+            onClick={() => setActiveTab("video")}
+          >
+            Video
+          </button>
+        </div>
 
-      <div>{renderTabContent()}</div>
-    </DetailLayout>
+        <div>{renderTabContent()}</div>
+      </DetailLayout>
+    </>
   );
 }
 

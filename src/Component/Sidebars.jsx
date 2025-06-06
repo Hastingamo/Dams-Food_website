@@ -166,7 +166,7 @@ const Sidebars = () => {
         >
           <img
             className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/user.png"
+            src="Images/shoppingCart.png"
             alt=""
           />
           <h1
