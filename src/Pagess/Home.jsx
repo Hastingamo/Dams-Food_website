@@ -41,13 +41,13 @@ function Home() {
         <>
           <div className="flex flex-row w-full h-[40rem] md:h-screen lg:h-[37rem]">
             {/* Left Section */}
-            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 ">
+            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-8 ">
               <motion.div
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
                 initial={{ opacity: 0, scale: 0.8, x: -130 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                className="shadow-2xl h-full pt-20 md:pt-30 lg:pt-48 xl:pt-10 gap-3"
+                className="shadow-2xl h-full  md:pt-30 lg:pt-48 xl:pt-10 gap-3"
               >
                 <h1 className="text-6xl md:text-8xl font-bold ml-4 text-white w-fit">
                   Food{" "}
