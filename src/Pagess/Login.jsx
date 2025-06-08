@@ -79,9 +79,9 @@ function Login(props) {
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: 730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex   justify-center items-center p-8"
+          className="flex bg-[#0D1321]  justify-center items-center p-8"
         >
-          <section className="ml-[86px] w-full max-w-md h-screen rounded-lg ">
+          <section className="ml-[86px] w-full max-w-md h-screen rounded-lg text-[#F5F5F5]">
             <p
               ref={errRef}
               className={errMsg ? "errmsg" : "offscreen"}
@@ -91,7 +91,7 @@ function Login(props) {
               {errMsg}
             </p>
 
-            <h1 className="text-center text-5xl mt-5">Login</h1>
+            <h1 className="text-center text-5xl mt-5 ">Login</h1>
 
             <form onSubmit={handleLogin} className="mt-10">
               <label htmlFor="email" className="md:text-2xl">
@@ -170,7 +170,7 @@ function Login(props) {
               {/* {error && <p>{errMsg}</p>} */}
               <button
                 type="submit"
-                className="mt-4 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded flex justify-center ml-10 items-center w-1/2"
+                className="mt-4  bg-[#79826A] text-white font-bold py-2 px-4 rounded flex justify-center ml-10 items-center w-1/2"
                 disabled={!validEmail || !validPwd}
               >
                 Login
@@ -194,19 +194,19 @@ function Login(props) {
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: -730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex-1  bg-blue-300 rounded-xl shadow-md p-4 flex  flex-col gap-4"
+          className="flex-1  bg-[#79826A] text-color-[#E5D2B0] rounded-xl shadow-md p-4 flex  flex-col gap-4"
         >
-          <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold mt-20 text-center">
+          <h1 className="text-color-[#E5D2B0] text-2xl md:text-4xl xl:text-5xl font-bold mt-20 text-center">
             Helllo Freind{" "}
           </h1>
-          <p className="text-gray-600 text-[12px] md:text-[20px] lg:text-2xl md:text-center ">
+          <p className="text-color-[#E5D2B0] text-[12px] md:text-[20px] lg:text-2xl md:text-center ">
             enter your personal detail <br></br>and start your journey
           </p>
           <p className="mt-4 text-center md:text-[20px] lg:text-2xl">Don't have an account yet?</p>
 
           <button
             onClick={props.toggleSignUp}
-            className=" underline mt-4 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded md:ml-14 w-1/2"
+            className=" underline mt-4 bg-[#252728] hover:bg-blue-800 text-white font-bold py-2 px-4 rounded md:ml-14 w-1/2"
           >
             Signup
           </button>
