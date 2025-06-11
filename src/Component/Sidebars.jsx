@@ -7,7 +7,7 @@ const Sidebars = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 h-[44rem]tttz-10 bg-[#e4c2bd] transition-all duration-300 ${
+      className={`fixed top-0 left-0 h-screen z-10 bg-[#e4c2bd] transition-all duration-300 ${
         isOpen ? "w-64" : "w-20"
       }`}
     >
