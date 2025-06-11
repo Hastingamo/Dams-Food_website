@@ -98,7 +98,7 @@ function SignUp(props) {
             transition={{ duration: 2 }}
             initial={{ opacity: 0, scale: 0.8, x: 730 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="flex-1  bg-blue-300 rounded-xl shadow-md "
+            className="flex-1  bg-[#552834] text-gray-600 rounded-xl shadow-md "
           >
             <h1 className="text-2xl md:text-4xl xl:text-5xl font-bold mt-20 md:mt-32 lg:mt-40 text-center">
               Welcome Back!
@@ -109,7 +109,7 @@ function SignUp(props) {
             <p className="text-[15px] mt-8 md:text-[18px] lg:text-2xl text-center"> Already registered?</p>
             <button
               onClick={props.toggleLogin}
-              className=" underline mt-4 ml-4 md:ml-8 lg:ml-12 bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded flex justify-center items-center w-1/2"
+              className=" underline mt-4 ml-4 md:ml-8 lg:ml-12  bg-[#f7f4f4]  hover:bg-blue-800 text-black font-bold py-2 px-4 rounded flex justify-center items-center w-1/2"
             >
               Signin
             </button>
@@ -120,10 +120,10 @@ function SignUp(props) {
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: -730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex w-2/3  p-8  xl:p-0 "
+          className="flex w-2/3  p-8  xl:p-0 bg-[#F9E4DA] "
         >
           {" "}
-          <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] ">
+          <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] text-black"> 
             <p
               ref={errRef}
               className={errMsg ? "errmsg text-red-600" : "offscreen"}
@@ -265,7 +265,7 @@ function SignUp(props) {
 
               <button
                 disabled={!validName || !validEmail || !validPwd || !validMatch}
-                className="mt-4 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded w-full"
+                className="mt-4 bg-[#79826A] text-white hover:bg-blue-700  p-2 rounded w-full"
               >
                 Sign up
               </button>

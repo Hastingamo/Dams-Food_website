@@ -79,9 +79,9 @@ function Login(props) {
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: 730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex bg-[#0D1321]  justify-center items-center p-8"
+          className="flex bg-[#F9E4DA]  justify-center items-center p-8"
         >
-          <section className="ml-[86px] w-full max-w-md h-screen rounded-lg text-[#F5F5F5]">
+          <section className="ml-[86px] w-full max-w-md h-screen rounded-lg text-black">
             <p
               ref={errRef}
               className={errMsg ? "errmsg" : "offscreen"}
@@ -91,7 +91,7 @@ function Login(props) {
               {errMsg}
             </p>
 
-            <h1 className="text-center text-5xl mt-5 ">Login</h1>
+            <h1 className="text-center text-5xl mt-5 text-black ">Login</h1>
 
             <form onSubmit={handleLogin} className="mt-10">
               <label htmlFor="email" className="md:text-2xl">
@@ -194,7 +194,7 @@ function Login(props) {
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: -730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex-1  bg-[#79826A] text-color-[#E5D2B0] rounded-xl shadow-md p-4 flex  flex-col gap-4"
+          className="flex-1  bg-[#552834] text-gray-600 rounded-xl shadow-md p-4 flex  flex-col gap-4"
         >
           <h1 className="text-color-[#E5D2B0] text-2xl md:text-4xl xl:text-5xl font-bold mt-20 text-center">
             Helllo Freind{" "}
@@ -206,7 +206,7 @@ function Login(props) {
 
           <button
             onClick={props.toggleSignUp}
-            className=" underline mt-4 bg-[#252728] hover:bg-blue-800 text-white font-bold py-2 px-4 rounded md:ml-14 w-1/2"
+            className=" underline mt-4 bg-[#f7f4f4] hover:bg-blue-800 text-black font-bold py-2 px-4 rounded md:ml-14 w-1/2"
           >
             Signup
           </button>
