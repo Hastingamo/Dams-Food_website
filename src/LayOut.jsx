@@ -7,7 +7,6 @@ function LayOut() {
     <div className='overflow-hidden'>
         <Header/>
         <Outlet/>
-        <Footer/>
     </div>
   )
 }
