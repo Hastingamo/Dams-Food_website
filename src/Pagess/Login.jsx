@@ -81,7 +81,7 @@ function Login(props) {
           whileInView={{ opacity: 1, scale: 1 }}
           className="flex bg-[#F9E4DA]  justify-center items-center p-8"
         >
-          <section className="ml-[86px] w-full max-w-md h-[40rem] rounded-lg text-black">
+          <section className="ml-[86px] w-full max-w-md h-screen rounded-lg text-black">
             <p
               ref={errRef}
               className={errMsg ? "errmsg" : "offscreen"}
@@ -188,7 +188,7 @@ function Login(props) {
         </motion.div>
       </div>
 
-      <div className="flex w-2/6 h-[44rem]">
+      <div className="flex w-2/6 h-screen">
         <motion.div
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 2 }}
