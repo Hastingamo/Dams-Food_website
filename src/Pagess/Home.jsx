@@ -37,7 +37,7 @@ function Home() {
   // }, []);
 
   return (
-    <div className="flex flex-row  h-screen bg-gray-100">
+    <div className="flex flex-row   bg-gray-100">
       <Sidebars />
       {loading ? (
         <div className="flex justify-center items-center h-screen w-screen">
@@ -47,7 +47,7 @@ function Home() {
         <>
           <div className="flex flex-row w-full h-[40rem] md:h-screen lg:h-[37rem]">
             {/* Left Section */}
-            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-12 ">
+            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-12  pb-12">
               <motion.div
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
@@ -86,7 +86,7 @@ function Home() {
             </div>
 
             {/* Right Section */}
-            <div className="w-1/3 bg-pink-200 pt-12 pr-8">
+            <div className="w-1/3 bg-pink-200 pt-12  pb-12 pr-8">
               <motion.div
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
