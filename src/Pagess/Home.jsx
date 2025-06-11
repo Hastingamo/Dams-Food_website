@@ -107,7 +107,7 @@ function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       src={featuredImage.strMealThumb}
                       alt={featuredImage.strMeal}
-                      className="w-[10rem] md:w-[30rem] h-auto rounded-full shadow-lg mt-4"
+                      className="w-[10rem] md:w-[25rem] h-auto rounded-full shadow-lg mt-4"
                     />
              
                   </div>
