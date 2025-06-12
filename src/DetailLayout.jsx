@@ -44,13 +44,13 @@ const DetailLayout = ({
             />
           </motion.div>
         </div>
-        <div className="flex-1 flex justify-center items-start ">
+        {/* <div className="flex-1 flex justify-center items-start ">
           <img
             src={image}
             alt={title}
             className="w-96 h-96 object-cover flex  shadow-lg"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Mobile View */}

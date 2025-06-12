@@ -82,15 +82,14 @@ function FoodDetails() {
             </div>
             <h1>choose you location</h1>
 
-            <img
-              src="Images/leftArror.png bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5"
-              className="w-4 h-4"
-              alt=""
-              srcset=""
-            >
-              {" "}
+            <button className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2">
+              <img
+                src="/Images/shoppingCart.png"
+                className="w-4 h-4"
+                alt="arrow"
+              />
               Add to Cart
-            </img>
+            </button>
           </div>
         );
       case "video":
