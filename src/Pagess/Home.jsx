@@ -29,15 +29,15 @@ function Home() {
 
     return () => clearTimeout(timer);
   }, []);
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, []);
 
   return (
-    <div className="flex flex-row bg-gray-100">
+    <div className="flex flex-row ">
       <Sidebars />
       {loading ? (
         <div className="flex justify-center items-center h-screen w-screen">
