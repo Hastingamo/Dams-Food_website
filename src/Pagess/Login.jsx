@@ -188,7 +188,7 @@ function Login(props) {
         </motion.div>
       </div>
 
-      <div className="flex w-2/6 h-screen">
+      <div className=" hidden md:h-screen md:flex md:w-2/6">
         <motion.div
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 2 }}

@@ -1,7 +1,7 @@
-import React from 'react'
-import { Outlet } from 'react-router'
-import Header from './Component/Header'
-import Footer from './Component/Footer' 
+import React from "react";
+import { Outlet } from "react-router";
+import Header from "./Component/Header";
+import Footer from "./Component/Footer";
 function LayOut() {
   return (
     <div className="min-h-screen flex flex-col overflow-hidden">
@@ -11,7 +11,7 @@ function LayOut() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default LayOut
+export default LayOut;
