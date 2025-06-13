@@ -37,7 +37,7 @@ function Home() {
   // }, []);
 
   return (
-    <div className="flex flex-row ">
+    <div className="flex flex-row  h-[100%]">
       <Sidebars />
       {loading ? (
         <div className="flex justify-center items-center h-screen w-screen">
@@ -47,7 +47,7 @@ function Home() {
         <>
           <div className="flex flex-row w-full h-[40rem] md:h-screen lg:h-[37rem]">
             {/* Left Section */}
-            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-12  pb-12">
+            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-[4rem]  pb-[4rem]">
               <motion.div
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
@@ -55,7 +55,7 @@ function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 className="shadow-2xl h-full  md:pt-30 lg:pt-48 xl:pt-10 gap-3"
               >
-                <h1 className="text-6xl md:text-8xl font-bold ml-4 text-white w-fit">
+                <h1 className="text-6xl md:text-8xl font-bold ml-4 text-white w-fit  pt-12 md:pt-2">
                   Food{" "}
                 </h1>
                 <p className="text-white ml-4 md:text-2xl">is your good </p>
@@ -86,7 +86,7 @@ function Home() {
             </div>
 
             {/* Right Section */}
-            <div className="w-1/3 bg-pink-200 pt-12  pb-12 pr-8">
+            <div className="w-1/3 bg-pink-200 pt-[4rem]  pb-[4rem] pr-8">
               <motion.div
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
