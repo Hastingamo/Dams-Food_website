@@ -37,7 +37,7 @@ function Home() {
   // }, []);
 
   return (
-    <div className="flex flex-row  h-[100%]">
+    <div className="flex flex-row  h-fit">
       <Sidebars />
       {loading ? (
         <div className="flex justify-center items-center h-screen w-screen">
