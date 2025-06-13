@@ -38,7 +38,7 @@ function Home() {
 
   return (
     <div className="flex flex-row  h-fit">
-      <Sidebars />
+      {/* <Sidebars /> */}
       {loading ? (
         <div className="flex justify-center items-center h-screen w-screen">
           <MoonLoader color="black" size={100} />
