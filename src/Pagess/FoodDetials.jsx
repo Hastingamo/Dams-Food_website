@@ -80,7 +80,7 @@ function FoodDetails() {
       existingCart.push({
         id: meal.idMeal,
         title: meal.strMeal,
-        price: meal.price,
+         price: meal.randomPrice,
         quantity,
         image: meal.strMealThumb,
       });
@@ -101,11 +101,23 @@ function FoodDetails() {
             <h2 className="text-lg font-semibold text-black-600">
               Price: ${meal.randomPrice}
             </h2>
-            <div className="flex gap-2 mt-2">
-              <button className="p-2 border">-</button>
-              <p className="p-2">1</p>
-              <button className="p-2 border">+</button>
-            </div>
+          <div className="flex gap-2 mt-2 items-center">
+            <button
+              className="p-2 border rounded"
+              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+            >
+              -
+            </button>
+            <p className="p-2">{quantity}</p>
+            <button
+              className="p-2 border rounded"
+              onClick={() => setQuantity((prev) => prev + 1)}
+            >
+              +
+            </button>
+          </div>
+
+
             <h1>choose you location</h1>
 
             <button onClick={addToCart} className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2">
