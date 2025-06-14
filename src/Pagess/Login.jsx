@@ -72,7 +72,7 @@ function Login(props) {
 
   return (
     <div className="flex flex-row  w-full  overflow-hidden">
-      <Sidebars />
+      {/* <Sidebars /> */}
       <div className="w-2/3">
         <motion.div
           animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -81,7 +81,7 @@ function Login(props) {
           whileInView={{ opacity: 1, scale: 1 }}
           className="flex bg-[#F9E4DA]  justify-center items-center p-8"
         >
-          <section className="ml-[86px] w-full max-w-md h-screen rounded-lg text-black">
+          <section className="md:ml-[86px] w-full max-w-md h-screen rounded-lg text-black">
             <p
               ref={errRef}
               className={errMsg ? "errmsg" : "offscreen"}
@@ -188,13 +188,13 @@ function Login(props) {
         </motion.div>
       </div>
 
-      <div className=" hidden md:h-screen md:flex md:w-2/6">
+      <div className="md:flex md:w-2/6">
         <motion.div
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 2 }}
           initial={{ opacity: 0, scale: 0.8, x: -730 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex-1  bg-[#552834] text-gray-600 rounded-xl shadow-md p-4 flex  flex-col gap-4"
+          className="flex-1  bg-[#552834] text-gray-600 rounded-xl shadow-md p-4 flex  flex-col gap-4 h-screen"
         >
           <h1 className="text-color-[#E5D2B0] text-2xl md:text-4xl xl:text-5xl font-bold mt-20 text-center">
             Helllo Freind{" "}

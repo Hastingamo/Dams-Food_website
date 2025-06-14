@@ -89,9 +89,9 @@ function SignUp(props) {
   return (
     <div className="flex flex-row  h-screen w-full  overflow-hidden">
       <div className="fixed top-0 left-0 h-fit w-[86px] z-10">
-        <Sidebars />
+        {/* <Sidebars /> */}
       </div>{" "}
-      <div className="ml-[86px] flex  w-[calc(100%-86px)]">
+      <div className=" flex  w-[100%]">
         <div className="flex  w-4/12 h-screen gap-4">
           <motion.div
             animate={{ opacity: 1, x: 0, scale: 1 }}
