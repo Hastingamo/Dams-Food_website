@@ -123,7 +123,7 @@ function SignUp(props) {
           className="flex w-2/3  p-8  xl:p-0 bg-[#F9E4DA] "
         >
           {" "}
-          <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] text-black"> 
+          <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] text-black xl:overflow-y-hidden"> 
             <p
               ref={errRef}
               className={errMsg ? "errmsg text-red-600" : "offscreen"}

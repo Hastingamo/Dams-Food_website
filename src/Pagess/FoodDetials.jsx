@@ -13,6 +13,8 @@ function FoodDetails() {
   const [mealImages, setMealImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("instructions");
+    const [quantity, setQuantity] = useState(1);
+
 
   const getRandomPrice = (id) => {
     const base = parseInt(id.slice(-3), 10) || Math.floor(Math.random() * 100);
@@ -65,6 +67,30 @@ function FoodDetails() {
       </div>
     );
   if (!meal) return <p>Meal not found.</p>;
+  
+  const addToCart = () => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const itemIndex = existingCart.findIndex((item) => item.id === meal.idMeal);
+
+    if (itemIndex !== -1) {
+      // already in cart, update quantity
+      existingCart[itemIndex].quantity += quantity;
+    } else {
+      // add new item
+      existingCart.push({
+        id: meal.idMeal,
+        title: meal.strMeal,
+        price: meal.price,
+        quantity,
+        image: meal.strMealThumb,
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(existingCart));
+    alert("Added to cart!");
+  };
+
+  if (!meal) return <p>Loading...</p>;
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -82,7 +108,7 @@ function FoodDetails() {
             </div>
             <h1>choose you location</h1>
 
-            <button className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2">
+            <button onClick={addToCart} className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2">
               <img
                 src="/Images/shoppingCart.png"
                 className="w-4 h-4"
