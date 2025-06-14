@@ -29,12 +29,12 @@ function Home() {
 
     return () => clearTimeout(timer);
   }, []);
-  // useEffect(() => {
-  //   document.body.style.overflow = "hidden";
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, []);
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return (
     <div className="flex flex-row  h-fit">
@@ -47,7 +47,7 @@ function Home() {
         <>
           <div className="flex flex-row w-full h-[40rem] md:h-screen lg:h-[37rem]">
             {/* Left Section */}
-            <div className="w-2/3 ml-[5rem] bg-blue-200 pl-8 pt-[4rem]  pb-[4rem]">
+            <div className="w-2/3 bg-blue-200 pl-8 pt-[4rem]  pb-[4rem]">
               <motion.div
                 animate={{ opacity: 1, x: 0, scale: 1 }}
                 transition={{ duration: 2 }}
