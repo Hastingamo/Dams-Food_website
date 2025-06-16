@@ -4,9 +4,9 @@ import Header from "./Component/Header";
 import Footer from "./Component/Footer";
 function LayOut() {
   return (
-<div className="min-h-screen flex flex-col">
+    <div className="flex flex-col">
       <Header />
-        <Outlet />
+      <Outlet />
       <Footer />
     </div>
   );
