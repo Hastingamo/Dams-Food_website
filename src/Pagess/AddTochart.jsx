@@ -1,10 +1,11 @@
 import React from "react";
 import Sidebars from "../Component/Sidebars";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import DeleteModal from "../Component/DeleteModal";
 function AddTochart() {
   const [cart, setCart] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  // const [amount, setAmount] = useState(0);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("cart")) || [];
@@ -32,19 +33,28 @@ function AddTochart() {
                     >
                       <img
                         src={item.image}
-                        className="w-16 h-16 rounded"
+                        className="w-16 h-16  md:w-28 md:h-28 rounded"
                         alt={item.title}
                       />
-                      <div>
+                      <div className="md:text-2xl">
                         <h2>{item.title}</h2>
                         <p>${item.price}</p>
                       </div>
-                      <div classname="xl:ml-[5rem]">
-                        <DeleteModal/>
+                      <div classname=" float float-left">
+                        <DeleteModal />
                         {/* <img src="Images/trash.png" alt=""  className="w-4 h-4 ml-[50px]  "/> */}
                         <div className="flex flex-row  gap-4 mt-4">
-                          <button className="p-2 border rounded">-</button>
-                          <p className="mt-2"> {item.quantity}</p>
+                          <button
+                            className="p-2 border rounded"
+                            onClick={() =>
+                              setQuantity((prev) => Math.max(1, prev - 1))
+                            }
+                          >
+                            -
+                          </button>
+                          <p className="mt-2">
+                            {item.quantity}
+                          </p>
                           <button className="p-2 border rounded">+</button>
                         </div>
                       </div>

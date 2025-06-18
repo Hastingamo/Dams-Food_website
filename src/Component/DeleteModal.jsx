@@ -30,7 +30,7 @@ function DeleteModal() {
       {isOpen && (
         <div
           onClick={handleOutSideClick}
-          className="fixed inset-0 backdrop-blur-sm bg-opacity-50 bg-black flex items-center justify-center"
+          className="fixed inset-0 backdrop-blur-sm bg-opacity-50  flex items-center justify-center"
         >
           <div className="bg-white p-6 rounded shadow-lg">
             <h2 className="text-xl font-bold mb-4">Delete Item</h2>
