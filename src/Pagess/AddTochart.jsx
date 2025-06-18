@@ -2,7 +2,7 @@ import React from "react";
 import Sidebars from "../Component/Sidebars";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
+import DeleteModal from "../Component/DeleteModal";
 function AddTochart() {
   const [cart, setCart] = useState([]);
 
@@ -18,7 +18,7 @@ function AddTochart() {
       <diiv className="flex flex-row min-h-screen">
         <Sidebars />
         <div className="w-screen  bg-[#C88D84] ml-[80px]">
-          <div className="pt-8  md:px-[2rem] rounded-lg shadow-lg w-full max-w-md ">
+          <div className="pt-8  md:px-[2rem] rounded-lg shadow-lg w-full  ">
             <div className="p-4">
               <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
               {cart.length === 0 ? (
@@ -28,7 +28,7 @@ function AddTochart() {
                   {cart.map((item) => (
                     <div
                       key={item.id}
-                      className="flex items-center mb-4 gap-4 bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50  p-4"
+                      className="grid grid-cols-3 items-center mb-4 gap-4 bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50  p-4"
                     >
                       <img
                         src={item.image}
@@ -39,8 +39,9 @@ function AddTochart() {
                         <h2>{item.title}</h2>
                         <p>${item.price}</p>
                       </div>
-                      <div>
-                        <img src="Images/trash.png" alt=""  className="w-4 h-4  ml-[5rem]"/>
+                      <div classname="xl:ml-[5rem]">
+                        <DeleteModal/>
+                        {/* <img src="Images/trash.png" alt=""  className="w-4 h-4 ml-[50px]  "/> */}
                         <div className="flex flex-row  gap-4 mt-4">
                           <button className="p-2 border rounded">-</button>
                           <p className="mt-2"> {item.quantity}</p>
