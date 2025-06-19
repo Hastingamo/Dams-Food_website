@@ -14,14 +14,21 @@ function AddTochart() {
 
   const getTotal = () =>
     cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
+
+  const handleDelete = (id) => {
+  const updatedCart = cart.filter((item) => item.id !== id);
+  setCart(updatedCart);
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+};
+
   return (
     <>
       <diiv className="flex flex-row min-h-screen">
         <Sidebars />
         <div className="w-screen  bg-[#C88D84] ml-[80px]">
           <div className="pt-8  md:px-[2rem] rounded-lg shadow-lg w-full  ">
-            <div className="p-4">
-              <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
+            <div className="p-4  ">
+              <h1 className="text-2xl font-bold mb-4 text-center">Your Cart</h1>
               {cart.length === 0 ? (
                 <p>Your cart is empty.</p>
               ) : (
@@ -29,21 +36,23 @@ function AddTochart() {
                   {cart.map((item) => (
                     <div
                       key={item.id}
-                      className="grid grid-cols-3 items-center mb-4 gap-4 bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50  p-4"
+                      className="grid grid-cols-3 items-center mb-4 gap-4 bg-linear-to-bl from-[#8e5047]-700 xl:w-4/5 to-fuchsia-50  p-4  xl:ml-32 "
                     >
                       <img
                         src={item.image}
-                        className="w-16 h-16  md:w-28 md:h-28 rounded"
+                        className="w-16 h-16  md:w-28 md:h-28  lg:w-36 lg:h-36 rounded"
                         alt={item.title}
                       />
                       <div className="md:text-2xl">
                         <h2>{item.title}</h2>
                         <p>${item.price}</p>
                       </div>
-                      <div classname=" float float-left">
-                        <DeleteModal />
+                      <div classname="">
+                        <div className="ml-[50px] md:ml-[110px] xl:ml-[250px]">
+                          <DeleteModal onDelete={() => handleDelete(item.id)} />
+                        </div>
                         {/* <img src="Images/trash.png" alt=""  className="w-4 h-4 ml-[50px]  "/> */}
-                        <div className="flex flex-row  gap-4 mt-4">
+                        <div className="flex flex-row  gap-4 mt-4 md:ml-[50px] xl:ml-[170px]">
                           <button
                             className="p-2 border rounded"
                             onClick={() =>
@@ -52,9 +61,7 @@ function AddTochart() {
                           >
                             -
                           </button>
-                          <p className="mt-2">
-                            {item.quantity}
-                          </p>
+                          <p className="mt-2">{item.quantity}</p>
                           <button className="p-2 border rounded">+</button>
                         </div>
                       </div>

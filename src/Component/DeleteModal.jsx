@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-function DeleteModal() {
+function DeleteModal({ onDelete }) {
   const [isOpen, setIsOpen] = useState();
   function handleOpen() {
     setIsOpen(true);
@@ -10,9 +10,10 @@ function DeleteModal() {
       setIsOpen(false);
     }
   }
-  //   function handleClose() {
-  //     setIsOpen(false);
-  //   }
+  function handleConfirmDelete() {
+    onDelete(); // Call the delete function passed from parent
+    setIsOpen(false);
+  }
   return (
     <>
       {/* <button
@@ -36,10 +37,10 @@ function DeleteModal() {
             <h2 className="text-xl font-bold mb-4">Delete Item</h2>
             <div className="mt-4 flex justify-end gap-2">
               <button className="bg-gray-300 px-4 py-2 rounded">
-                remove from cart
-              </button>
-              <button className="bg-red-500 text-white px-4 py-2 rounded">
                 safe to wishlist
+              </button>
+              <button className="bg-red-500 text-white px-4 py-2 rounded " onClick={handleConfirmDelete}>
+                remove from cart
               </button>
             </div>
           </div>
