@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import DeleteModal from "../Component/DeleteModal";
 function AddTochart() {
   const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(1);
   // const [amount, setAmount] = useState(0);
 
   useEffect(() => {
@@ -16,10 +15,10 @@ function AddTochart() {
     cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
 
   const handleDelete = (id) => {
-  const updatedCart = cart.filter((item) => item.id !== id);
-  setCart(updatedCart);
-  localStorage.setItem("cart", JSON.stringify(updatedCart));
-};
+    const updatedCart = cart.filter((item) => item.id !== id);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
 
   return (
     <>
@@ -56,13 +55,41 @@ function AddTochart() {
                           <button
                             className="p-2 border rounded"
                             onClick={() =>
-                              setQuantity((prev) => Math.max(1, prev - 1))
+                              setCart((prev) =>
+                                prev.map((cartItem) =>
+                                  cartItem.id === item.id
+                                    ? {
+                                        ...cartItem,
+                                        quantity: Math.max(
+                                          1,
+                                          cartItem.quantity - 1
+                                        ),
+                                      }
+                                    : cartItem
+                                )
+                              )
                             }
                           >
                             -
                           </button>
                           <p className="mt-2">{item.quantity}</p>
-                          <button className="p-2 border rounded">+</button>
+                          <button
+                            className="p-2 border rounded"
+                            onClick={() =>
+                              setCart((prev) =>
+                                prev.map((cartItem) =>
+                                  cartItem.id === item.id
+                                    ? {
+                                        ...cartItem,
+                                        quantity: cartItem.quantity + 1,
+                                      }
+                                    : cartItem
+                                )
+                              )
+                            }
+                          >
+                            +
+                          </button>
                         </div>
                       </div>
                     </div>
