@@ -94,9 +94,12 @@ function AddTochart() {
                       </div>
                     </div>
                   ))}
-                  <h2 className="mt-4 text-xl font-bold">
+                  <h2 className="mt-4 text-xl font-bold text-center">
                     Total: ${getTotal()}
                   </h2>
+                  <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
+                    Proceed to Checkout   
+                    </button>
                 </div>
               )}
             </div>
