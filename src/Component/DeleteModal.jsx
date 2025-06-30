@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-function DeleteModal({ onDelete }) {
+function DeleteModal({ onDelete, onSafeForLater }) {
   const [isOpen, setIsOpen] = useState();
   function handleOpen() {
     setIsOpen(true);
@@ -13,6 +13,10 @@ function DeleteModal({ onDelete }) {
   function handleConfirmDelete() {
     onDelete(); // Call the delete function passed from parent
     setIsOpen(false);
+  }
+  function addToSafForeLater(){
+    onSafeForLater()
+
   }
   return (
     <>
@@ -36,8 +40,8 @@ function DeleteModal({ onDelete }) {
           <div className="bg-white p-6 rounded shadow-lg">
             <h2 className="text-xl font-bold mb-4">Delete Item</h2>
             <div className="mt-4 flex justify-end gap-2">
-              <button className="bg-gray-300 px-4 py-2 rounded">
-                safe to wishlist
+              <button className="bg-gray-300 px-4 py-2 rounded" onCanPlay={addToSafForeLater}>
+                safe to later
               </button>
               <button className="bg-red-500 text-white px-4 py-2 rounded " onClick={handleConfirmDelete}>
                 remove from cart
