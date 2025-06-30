@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebars from "../Component/Sidebars";
-import { useState, useEffect } from "react";
 import DeleteModal from "../Component/DeleteModal";
+
 function AddTochart() {
   const [cart, setCart] = useState([]);
-  // const [amount, setAmount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("cart")) || [];
@@ -14,6 +15,12 @@ function AddTochart() {
   const getTotal = () =>
     cart.reduce((sum, item) => sum + item.quantity * item.price, 0);
 
+  const handleCheckout = () => {
+    localStorage.setItem("checkoutCart", JSON.stringify(cart));
+    localStorage.setItem("totalAmount", getTotal());
+    navigate("/CheckOut");
+  };
+
   const handleDelete = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
@@ -22,11 +29,11 @@ function AddTochart() {
 
   return (
     <>
-      <diiv className="flex flex-row min-h-screen">
+      <div className="flex flex-row min-h-screen">
         <Sidebars />
-        <div className="w-screen  bg-[#C88D84] ml-[80px]">
-          <div className="pt-8  md:px-[2rem] rounded-lg shadow-lg w-full  ">
-            <div className="p-4  ">
+        <div className="w-screen bg-[#C88D84] ml-[80px]">
+          <div className="pt-8 md:px-[2rem] rounded-lg shadow-lg w-full">
+            <div className="p-4">
               <h1 className="text-2xl font-bold mb-4 text-center">Your Cart</h1>
               {cart.length === 0 ? (
                 <p>Your cart is empty.</p>
@@ -35,23 +42,22 @@ function AddTochart() {
                   {cart.map((item) => (
                     <div
                       key={item.id}
-                      className="grid grid-cols-3 items-center mb-4 gap-4 bg-linear-to-bl from-[#8e5047]-700 xl:w-4/5 to-fuchsia-50  p-4  xl:ml-32 "
+                      className="grid grid-cols-3 items-center mb-4 gap-4 bg-gradient-to-bl from-[#8e5047] to-fuchsia-50 p-4 xl:ml-32"
                     >
                       <img
                         src={item.image}
-                        className="w-16 h-16  md:w-28 md:h-28  lg:w-36 lg:h-36 rounded"
                         alt={item.title}
+                        className="w-16 h-16 md:w-28 md:h-28 lg:w-36 lg:h-36 rounded"
                       />
                       <div className="md:text-2xl">
                         <h2>{item.title}</h2>
                         <p>${item.price}</p>
                       </div>
-                      <div classname="">
+                      <div className="text-right">
                         <div className="ml-[50px] md:ml-[110px] xl:ml-[250px]">
                           <DeleteModal onDelete={() => handleDelete(item.id)} />
                         </div>
-                        {/* <img src="Images/trash.png" alt=""  className="w-4 h-4 ml-[50px]  "/> */}
-                        <div className="flex flex-row  gap-4 mt-4 md:ml-[50px] xl:ml-[170px]">
+                        <div className="flex flex-row gap-4 mt-4 md:ml-[50px] xl:ml-[170px]">
                           <button
                             className="p-2 border rounded"
                             onClick={() =>
@@ -60,10 +66,7 @@ function AddTochart() {
                                   cartItem.id === item.id
                                     ? {
                                         ...cartItem,
-                                        quantity: Math.max(
-                                          1,
-                                          cartItem.quantity - 1
-                                        ),
+                                        quantity: Math.max(1, cartItem.quantity - 1),
                                       }
                                     : cartItem
                                 )
@@ -94,18 +97,26 @@ function AddTochart() {
                       </div>
                     </div>
                   ))}
+
                   <h2 className="mt-4 text-xl font-bold text-center">
-                    Total: ${getTotal()}
+                    Total: ${getTotal().toFixed(2)}
                   </h2>
-                  <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-                    Proceed to Checkout   
+
+                    <button
+                      className="mt-4 bg-blue-500 text-white px-4 py-2 rounded block mx-auto"
+                      onClick={() => {
+                        handleCheckout();
+                      }}
+                    >
+                      Proceed to Checkout
                     </button>
+  
                 </div>
               )}
             </div>
           </div>
         </div>
-      </diiv>
+      </div>
     </>
   );
 }
