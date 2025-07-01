@@ -44,7 +44,6 @@ function CheckOut() {
               <p className="text-lg font-bold">
                 Total: ${(total + 5).toFixed(2)}
               </p>
-              <p className="text-lg font-bold">Thank you for your order!</p>
             </div>
             <div className="w-2/4 bg-blue-400 h-screen flex items-center justify-center">
                   {/* <h1>buy now </h1> */}
