@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebars from "../Component/Sidebars";
 import DeleteModal from "../Component/DeleteModal";
+import FlutterWave from "../Component/flutterWave";
 
 function AddTochart() {
   const [cart, setCart] = useState([]);
@@ -18,7 +19,6 @@ function AddTochart() {
   const handleCheckout = () => {
     localStorage.setItem("checkoutCart", JSON.stringify(cart));
     localStorage.setItem("totalAmount", getTotal());
-    navigate("/CheckOut");
   };
 
   const handleDelete = (id) => {
@@ -51,7 +51,7 @@ function AddTochart() {
                       />
                       <div className="md:text-2xl">
                         <h2>{item.title}</h2>
-                        <p>${item.price}</p>
+                        <p>NGN:{item.price}</p>
                       </div>
                       <div className="text-right">
                         <div className="ml-[50px] md:ml-[110px] xl:ml-[250px]">
@@ -99,7 +99,7 @@ function AddTochart() {
                   ))}
 
                   <h2 className="mt-4 text-xl font-bold text-center">
-                    Total: ${getTotal().toFixed(2)}
+                    Total: Ngn: {getTotal().toFixed(2)}
                   </h2>
 
                     <button
@@ -108,7 +108,7 @@ function AddTochart() {
                         handleCheckout();
                       }}
                     >
-                      Proceed to Checkout
+                        <FlutterWave/>
                     </button>
   
                 </div>

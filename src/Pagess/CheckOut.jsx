@@ -1,9 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { MoonLoader } from "react-spinners";
 import Sidebars from "../Component/Sidebars";
-import PaypalButton from "../Component/PaypalButton";
-
-
+import FlutterWave from "../Component/flutterWave";
 function CheckOut() {
   const [loading, setLoading] = useState(true);
   const [total, setTotal] = useState(0);
@@ -27,7 +25,7 @@ function CheckOut() {
 
   return (
     <div className="flex flex-col min-h-screen  bg-[#C88D84]">
-      <Sidebars />
+      {/* <Sidebars /> */}
       {loading ? (
         <div className="flex items-center justify-center h-screen">
           <MoonLoader color="black" size={100} />
@@ -38,8 +36,8 @@ function CheckOut() {
           <div className="flex flex-row bg-pink-200 h-screen ml-[80px]">
             <div className="w-2/4">
               <p className="text-lg">Order Summary</p>
-              <p>Total price: ${total.toFixed(2)}</p>
-              <p>Shipping fee: $5.00</p>
+              <p>Total price: NGN: {total.toFixed(2)}</p>
+              <p>Shipping fee: NGN:1500.00</p>
               <hr className="my-2" />
               <p className="text-lg font-bold">
                 Total: ${(total + 5).toFixed(2)}
@@ -47,7 +45,7 @@ function CheckOut() {
             </div>
             <div className="w-2/4 bg-blue-400 h-screen flex items-center justify-center">
                   {/* <h1>buy now </h1> */}
-              <PaypalButton/>
+              <FlutterWave/>
             </div>
           </div>
         </div>

@@ -11,11 +11,12 @@ function CockDetails() {
   const [activeTab, setActiveTab] = useState("instructions");
   const [quantity, setQuantity] = useState(1);
 
-  const getRandomPrice = (id) => {
-    const base = parseInt(id.slice(-3), 10) || Math.floor(Math.random() * 100);
-    const price = 5 + (base % 15);
-    return Math.round(price);
-  };
+const getRandomPrice = (id) => {
+  const base = parseInt(id.slice(-5), 10) || Math.floor(Math.random() * 9000) + 1000;
+  const price = 1000 + (base % 9000); // ensures value is between 1000 and 9999
+  return Math.round(price);
+};
+
 
   useEffect(() => {
     const fetchCocktailDetails = async () => {
@@ -92,7 +93,7 @@ function CockDetails() {
           <div>
             <h2 className="text-lg font-semibold">Order:</h2>
             <h2 className="text-lg font-semibold text-black-600">
-              Price: ${cockTailss.randomPrice}
+              Price: NGN: {cockTailss.randomPrice}
             </h2>
             <div className="flex gap-2 mt-2">
               <button
