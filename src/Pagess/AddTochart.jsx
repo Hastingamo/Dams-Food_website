@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Sidebars from "../Component/Sidebars";
 import DeleteModal from "../Component/DeleteModal";
 import FlutterWave from "../Component/flutterWave";
 
 function AddTochart() {
   const [cart, setCart] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem("cart")) || [];
