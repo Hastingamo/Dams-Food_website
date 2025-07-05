@@ -40,6 +40,7 @@ function FlutterWave() {
         console.error('Payment failed:', response);
       } else { 
         console.log('Payment successful:', response);
+         onPaymentSuccess();
       }
       closePaymentModal() // this will close the modal programmatically
     },

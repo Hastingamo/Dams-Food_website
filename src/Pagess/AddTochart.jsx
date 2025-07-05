@@ -24,6 +24,17 @@ function AddTochart() {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+  
+  const handlePaymentSuccess = () => {
+  setCart([]);
+
+  localStorage.removeItem("cart");
+  localStorage.removeItem("checkoutCart");
+  localStorage.removeItem("totalAmount");
+
+  alert("Payment successful! Your cart has been cleared.");
+};
+
 
   return (
     <>
@@ -101,12 +112,12 @@ function AddTochart() {
                   </h2>
 
                     <button
-                      className="mt-4 bg-blue-500 text-white px-4 py-2 rounded block mx-auto"
+                      className="mt-4 bg-gradient-to-bl from-[#8e5047] to-fuchsia-50  text-white px-4 py-2 rounded block mx-auto"
                       onClick={() => {
                         handleCheckout();
                       }}
                     >
-                        <FlutterWave/>
+                        <FlutterWave onPaymentSuccess={handlePaymentSuccess}/>
                     </button>
   
                 </div>
