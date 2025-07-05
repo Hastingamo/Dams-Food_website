@@ -36,7 +36,11 @@ function FlutterWave() {
     ...config,
     text: 'Pay with Flutterwave!',
     callback: (response) => {
-       console.log(response);
+      if(response.status !== 'successful') {
+        console.error('Payment failed:', response);
+      } else { 
+        console.log('Payment successful:', response);
+      }
       closePaymentModal() // this will close the modal programmatically
     },
     onClose: () => {},
