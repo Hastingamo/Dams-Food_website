@@ -213,9 +213,9 @@ const Sidebars = () => {
             className={`text-black text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/SafeTOLater")}
           >
-            Safe to later
+            Safe for later
           </h1>
 
         </div>

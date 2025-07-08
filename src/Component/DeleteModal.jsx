@@ -17,7 +17,9 @@ function DeleteModal({ onDelete, onSafeForLater }) {
   function addToSafForeLater() {
     onSafeForLater();
     setIsOpen(false);
+    
   }
+  
   return (
     <>
       {/* <button
@@ -35,16 +37,16 @@ function DeleteModal({ onDelete, onSafeForLater }) {
       {isOpen && (
         <div
           onClick={handleOutSideClick}
-          className="fixed inset-0 backdrop-blur-sm bg-opacity-50  flex items-center justify-center"
+          className="fixed inset-0 backdrop-blur-sm bg-opacity-50  flex items-center justify-center ml-14"
         >
           <div className="bg-white p-6 rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Delete Item</h2>
+            <h2 className="text-xl font-bold mb-4 text-center">Delete Item</h2>
             <div className="mt-4 flex justify-end gap-2">
               <button
                 className="bg-gray-300 px-4 py-2 rounded"
-                onCanPlay={addToSafForeLater}
+                onClick={addToSafForeLater}
               >
-                safe to later
+                safe for later
               </button>
               <button
                 className="bg-red-500 text-white px-4 py-2 rounded "

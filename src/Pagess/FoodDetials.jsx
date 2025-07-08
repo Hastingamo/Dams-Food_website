@@ -145,6 +145,7 @@ function FoodDetails() {
         );
       case "Review":
         return (
+
           <div className="space-y-4">
             <h2 className="text-lg font-semibold">Add Your Review:</h2>
             <form
@@ -276,7 +277,7 @@ function FoodDetails() {
           </button>
           <button
             className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-              activeTab === "video" ? "bg-gray-300" : ""
+              activeTab === "Review" ? "bg-gray-300" : ""
             }`}
             onClick={() => setActiveTab("Review")}
           >

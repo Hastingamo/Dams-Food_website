@@ -24,17 +24,38 @@ function AddTochart() {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
-  
+  const handleSaveForLater = (item) => {
+    // Prepare the full item with fallback values
+    const safeItem = {
+      id: item.id,
+      title: item.title || "Unnamed item",
+      price: item.price,
+      image: item.image,
+      quantity: item.quantity,
+    };
+
+    // Get existing saved items
+    const savedItems = JSON.parse(localStorage.getItem("safeItems")) || [];
+
+    // Add the new item to the saved list
+    const updatedSaved = [...savedItems, safeItem];
+    localStorage.setItem("safeItems", JSON.stringify(updatedSaved));
+
+    // Remove it from the cart
+    const updatedCart = cart.filter((c) => c.id !== item.id);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
   const handlePaymentSuccess = () => {
-  setCart([]);
+    setCart([]);
 
-  localStorage.removeItem("cart");
-  localStorage.removeItem("checkoutCart");
-  localStorage.removeItem("totalAmount");
+    localStorage.removeItem("cart");
+    localStorage.removeItem("checkoutCart");
+    localStorage.removeItem("totalAmount");
 
-  alert("Payment successful! Your cart has been cleared.");
-};
-
+    alert("Payment successful! Your cart has been cleared.");
+  };
 
   return (
     <>
@@ -64,7 +85,10 @@ function AddTochart() {
                       </div>
                       <div className="text-right">
                         <div className="ml-[50px] md:ml-[110px] xl:ml-[250px]">
-                          <DeleteModal onDelete={() => handleDelete(item.id)} />
+                          <DeleteModal
+                            onDelete={() => handleDelete(item.id)}
+                            onSafeForLater={() => handleSaveForLater(item)}
+                          />
                         </div>
                         <div className="flex flex-row gap-4 mt-4 md:ml-[50px] xl:ml-[170px]">
                           <button
@@ -75,7 +99,10 @@ function AddTochart() {
                                   cartItem.id === item.id
                                     ? {
                                         ...cartItem,
-                                        quantity: Math.max(1, cartItem.quantity - 1),
+                                        quantity: Math.max(
+                                          1,
+                                          cartItem.quantity - 1
+                                        ),
                                       }
                                     : cartItem
                                 )
@@ -111,15 +138,10 @@ function AddTochart() {
                     Total: Ngn: {getTotal().toFixed(2)}
                   </h2>
 
-                    <button
-                      className="mt-4 bg-gradient-to-bl from-[#8e5047] to-fuchsia-50  text-white px-4 py-2 rounded block mx-auto"
-                      onClick={() => {
-                        handleCheckout();
-                      }}
-                    >
-                        <FlutterWave onPaymentSuccess={handlePaymentSuccess}/>
-                    </button>
-  
+                  <FlutterWave
+                    onPaymentSuccess={handlePaymentSuccess}
+                    onCheckout={handleCheckout}
+                  />
                 </div>
               )}
             </div>

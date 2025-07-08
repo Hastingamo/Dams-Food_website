@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
-import { useEffect, useState } from 'react';
 import FireBaseUser from './FireBaseUser';
-function FlutterWave() {
+
+function FlutterWave({ onPaymentSuccess }) {
   const user = FireBaseUser();
   const [total, setTotal] = useState(0);
-    useEffect(() => {
+
+  useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     if (cart.length > 0) {
       const totalAmount = cart.reduce(
@@ -15,14 +16,15 @@ function FlutterWave() {
       setTotal(totalAmount);
     }
   }, []);
-     const config = {
+
+  const config = {
     public_key: 'FLWPUBK_TEST-591f4111d5e295abc6ad7a6028080b3c-X',
     tx_ref: Date.now(),
     currency: 'NGN',
-    amount: (total + 5),
+    amount: total + 5,
     payment_options: 'card,mobilemoney,ussd',
     customer: {
-     email: user?.email || 'default@example.com',
+      email: user?.email || 'default@example.com',
       name: user?.userName || 'Default User',
     },
     customizations: {
@@ -36,13 +38,15 @@ function FlutterWave() {
     ...config,
     text: 'Pay with Flutterwave!',
     callback: (response) => {
-      if(response.status !== 'successful') {
-        console.error('Payment failed:', response);
-      } else { 
+      if (response.status === 'successful') {
         console.log('Payment successful:', response);
-         onPaymentSuccess();
+        if (onPaymentSuccess) {
+          onPaymentSuccess(); // ✅ call passed-in function to clear cart
+        }
+      } else {
+        console.error('Payment failed:', response);
       }
-      closePaymentModal() // this will close the modal programmatically
+      closePaymentModal(); // Close the modal after handling
     },
     onClose: () => {},
   };
@@ -51,7 +55,7 @@ function FlutterWave() {
     <div>
       <FlutterWaveButton {...fwConfig} />
     </div>
-  )
+  );
 }
 
-export default FlutterWave
+export default FlutterWave;

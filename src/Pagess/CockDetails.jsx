@@ -45,7 +45,7 @@ function CockDetails() {
     if (cockTailss?.idDrink) {
       const saved =
         JSON.parse(localStorage.getItem(`reviews_${cockTailss.idDrink}`)) || [];
-      setReviews(saved);
+      setReviews(saved);  
     }
   }, [cockTailss]);
 
@@ -80,54 +80,54 @@ function CockDetails() {
   };
   const renderTabContent = () => {
     switch (activeTab) {
-      case "video":
-        return (
-          <div>
-            <h1></h1>
-            <form
-              className="space-y-2"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const trimmed = newReview.trim();
-                if (!trimmed) return;
+      // case "Review":
+      //   return (
+      //     <div>
+      //       <h1></h1>
+      //       <form
+      //         className="space-y-2"
+      //         onSubmit={(e) => {
+      //           e.preventDefault();
+      //           const trimmed = newReview.trim();
+      //           if (!trimmed) return;
 
-                if (reviews.length > 0) {
-                  alert("You have already submitted a review for this meal.");
-                  return;
-                }
+      //           if (reviews.length > 0) {
+      //             alert("You have already submitted a review for this meal.");
+      //             return;
+      //           }
 
-                const updatedReviews = [trimmed];
-                setReviews(updatedReviews);
-                localStorage.setItem(
-                  `reviews_${cockTailss.idDrink}`,
-                  JSON.stringify(updatedReviews)
-                );
-                setNewReview("");
-              }}
-            >
-              {reviews.length > 0 ? (
-                <p className="text-green-600 font-medium">
-                  You have already submitted a review.
-                </p>
-              ) : (
-                <>
-                  <textarea
-                    className="w-full border rounded p-2"
-                    placeholder="Write your review here..."
-                    value={newReview}
-                    onChange={(e) => setNewReview(e.target.value)}
-                  />
-                  <button
-                    type="submit"
-                    className="bg-black text-white px-4 py-2 rounded"
-                  >
-                    Submit Review
-                  </button>
-                </>
-              )}
-            </form>
-          </div>
-        );
+      //           const updatedReviews = [trimmed];
+      //           setReviews(updatedReviews);
+      //           localStorage.setItem(
+      //             `reviews_${cockTailss.idDrink}`,
+      //             JSON.stringify(updatedReviews)
+      //           );
+      //           setNewReview("");
+      //         }}
+      //       >
+      //         {reviews.length > 0 ? (
+      //           <p className="text-green-600 font-medium">
+      //             You have already submitted a review.
+      //           </p>
+      //         ) : (
+      //           <>
+      //             <textarea
+      //               className="w-full border rounded p-2"
+      //               placeholder="Write your review here..."
+      //               value={newReview}
+      //               onChange={(e) => setNewReview(e.target.value)}
+      //             />
+      //             <button
+      //               type="submit"
+      //               className="bg-black text-white px-4 py-2 rounded"
+      //             >
+      //               Submit Review
+      //             </button>
+      //           </>
+      //         )}
+      //       </form>
+      //     </div>
+      //   );
 
       default:
         return (
@@ -154,11 +154,17 @@ function CockDetails() {
             <h1>choose you location</h1>
 
             <button
-              className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5"
               onClick={handleAddToCart}
+              className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2"
             >
+              <img
+                src="/Images/shoppingCart.png"
+                className="w-4 h-4"
+                alt="arrow"
+              />
               Add to Cart
-            </button>
+            </button>            
+
           </div>
         );
     }
@@ -186,14 +192,7 @@ function CockDetails() {
         >
           Place Order
         </button>
-        <button
-          className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-            activeTab === "order" ? "bg-gray-300" : ""
-          }`}
-          onClick={() => setActiveTab("Review")}
-        >
-          Review
-        </button>
+
         {/* <button
           className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
             activeTab === "video" ? "bg-gray-300" : ""
