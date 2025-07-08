@@ -141,6 +141,7 @@ function AddTochart() {
                   <FlutterWave
                     onPaymentSuccess={handlePaymentSuccess}
                     onCheckout={handleCheckout}
+                    className="mt-4 bg-gradient-to-bl from-[#8e5047] to-fuchsia-50  text-white px-4 py-2 rounded block mx-auto"
                   />
                 </div>
               )}
