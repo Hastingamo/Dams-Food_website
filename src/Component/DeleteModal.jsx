@@ -11,12 +11,12 @@ function DeleteModal({ onDelete, onSafeForLater }) {
     }
   }
   function handleConfirmDelete() {
-    onDelete(); // Call the delete function passed from parent
+    onDelete();
     setIsOpen(false);
   }
-  function addToSafForeLater(){
-    onSafeForLater()
-
+  function addToSafForeLater() {
+    onSafeForLater();
+    setIsOpen(false);
   }
   return (
     <>
@@ -40,10 +40,16 @@ function DeleteModal({ onDelete, onSafeForLater }) {
           <div className="bg-white p-6 rounded shadow-lg">
             <h2 className="text-xl font-bold mb-4">Delete Item</h2>
             <div className="mt-4 flex justify-end gap-2">
-              <button className="bg-gray-300 px-4 py-2 rounded" onCanPlay={addToSafForeLater}>
+              <button
+                className="bg-gray-300 px-4 py-2 rounded"
+                onCanPlay={addToSafForeLater}
+              >
                 safe to later
               </button>
-              <button className="bg-red-500 text-white px-4 py-2 rounded " onClick={handleConfirmDelete}>
+              <button
+                className="bg-red-500 text-white px-4 py-2 rounded "
+                onClick={handleConfirmDelete}
+              >
                 remove from cart
               </button>
             </div>

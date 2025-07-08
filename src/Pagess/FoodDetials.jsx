@@ -4,6 +4,7 @@ import ImageSlider from "../Component/ImageSlider";
 import { motion } from "framer-motion";
 import DetailLayout from "../DetailLayout";
 import { MoonLoader } from "react-spinners";
+import BackButton from "../Component/BackButton";
 
 const UNSPLASH_API_KEY = "N5nfwFtAa37JzIcThzr96azWSfLkmEIu5yEtnhq3Ob8";
 
@@ -13,15 +14,17 @@ function FoodDetails() {
   const [mealImages, setMealImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("instructions");
-    const [quantity, setQuantity] = useState(1);
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState("");
 
+  const [quantity, setQuantity] = useState(1);
 
-const getRandomPrice = (id) => {
-  const base = parseInt(id.slice(-5), 10) || Math.floor(Math.random() * 9000) + 1000;
-  const price = 1000 + (base % 9000); 
-  return Math.round(price);
-};
-
+  const getRandomPrice = (id) => {
+    const base =
+      parseInt(id.slice(-5), 10) || Math.floor(Math.random() * 9000) + 1000;
+    const price = 1000 + (base % 9000);
+    return Math.round(price);
+  };
 
   useEffect(() => {
     const fetchMealDetails = async () => {
@@ -60,6 +63,13 @@ const getRandomPrice = (id) => {
 
     fetchMealDetails();
   }, [id]);
+  useEffect(() => {
+    if (meal?.idMeal) {
+      const saved =
+        JSON.parse(localStorage.getItem(`reviews_${meal.idMeal}`)) || [];
+      setReviews(saved);
+    }
+  }, [meal]);
 
   if (loading)
     return (
@@ -68,7 +78,7 @@ const getRandomPrice = (id) => {
       </div>
     );
   if (!meal) return <p>Meal not found.</p>;
-  
+
   const addToCart = () => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     const itemIndex = existingCart.findIndex((item) => item.id === meal.idMeal);
@@ -81,7 +91,7 @@ const getRandomPrice = (id) => {
       existingCart.push({
         id: meal.idMeal,
         title: meal.strMeal,
-         price: meal.randomPrice,
+        price: meal.randomPrice,
         quantity,
         image: meal.strMealThumb,
       });
@@ -102,26 +112,28 @@ const getRandomPrice = (id) => {
             <h2 className="text-lg font-semibold text-black-600">
               Price: NGN:{meal.randomPrice}
             </h2>
-          <div className="flex gap-2 mt-2 items-center">
-            <button
-              className="p-2 border rounded"
-              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-            >
-              -
-            </button>
-            <p className="p-2">{quantity}</p>
-            <button
-              className="p-2 border rounded"
-              onClick={() => setQuantity((prev) => prev + 1)}
-            >
-              +
-            </button>
-          </div>
-
+            <div className="flex gap-2 mt-2 items-center">
+              <button
+                className="p-2 border rounded"
+                onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+              >
+                -
+              </button>
+              <p className="p-2">{quantity}</p>
+              <button
+                className="p-2 border rounded"
+                onClick={() => setQuantity((prev) => prev + 1)}
+              >
+                +
+              </button>
+            </div>
 
             <h1>choose you location</h1>
 
-            <button onClick={addToCart} className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2">
+            <button
+              onClick={addToCart}
+              className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2"
+            >
               <img
                 src="/Images/shoppingCart.png"
                 className="w-4 h-4"
@@ -129,6 +141,69 @@ const getRandomPrice = (id) => {
               />
               Add to Cart
             </button>
+          </div>
+        );
+      case "Review":
+        return (
+          <div className="space-y-4">
+            <h2 className="text-lg font-semibold">Add Your Review:</h2>
+            <form
+              className="space-y-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const trimmed = newReview.trim();
+                if (!trimmed) return;
+
+                if (reviews.length > 0) {
+                  alert("You have already submitted a review for this meal.");
+                  return;
+                }
+
+                const updatedReviews = [trimmed]; // ✅ Only one allowed
+                setReviews(updatedReviews);
+                localStorage.setItem(
+                  `reviews_${meal.idMeal}`,
+                  JSON.stringify(updatedReviews)
+                );
+                setNewReview("");
+              }}
+            >
+              {reviews.length > 0 ? (
+                <p className="text-green-600 font-medium">
+                  You have already submitted a review.
+                </p>
+              ) : (
+                <>
+                  <textarea
+                    className="w-full border rounded p-2"
+                    placeholder="Write your review here..."
+                    value={newReview}
+                    onChange={(e) => setNewReview(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    className="bg-black text-white px-4 py-2 rounded"
+                  >
+                    Submit Review
+                  </button>
+                </>
+              )}
+            </form>
+
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold">User Reviews:</h3>
+              {reviews.length === 0 ? (
+                <p className="text-gray-500">No reviews yet.</p>
+              ) : (
+                <ul className="list-disc pl-5">
+                  {reviews.map((rev, idx) => (
+                    <li key={idx} className="mb-2 bg-gray-100 p-2 rounded">
+                      {rev}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
         );
       case "video":
@@ -198,6 +273,14 @@ const getRandomPrice = (id) => {
             onClick={() => setActiveTab("video")}
           >
             Video
+          </button>
+          <button
+            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+              activeTab === "video" ? "bg-gray-300" : ""
+            }`}
+            onClick={() => setActiveTab("Review")}
+          >
+            Review
           </button>
         </div>
 

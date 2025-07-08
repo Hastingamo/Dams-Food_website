@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import BackButton from "./Component/BackButton";
 const DetailLayout = ({
   image,
   title,
@@ -12,15 +13,18 @@ const DetailLayout = ({
 }) => {
   return (
     <div className="flex flex-row min-h-screen">
+      \{" "}
+                <BackButton />
+
       <div className="flex flex-col md:flex-col p-5 gap-8 bg-[rgb(249,249,249)] rounded-xl  flex-1 ">
-        
         <div className="hidden md:flex w-full gap-8">
+
           <motion.div
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1 }}
             initial={{ opacity: 0, scale: 0.8, y: 130 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="flex-1 p-8 bg-blue-300 rounded-xl shadow-md"
+            className="flex-1 mt-14 p-8 bg-blue-300 rounded-xl shadow-md"
           >
             <h1 className="text-2xl font-bold mt-20">{title}</h1>
             <p className="text-gray-600">{description}</p>
@@ -35,8 +39,7 @@ const DetailLayout = ({
             initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="flex-1 flex justify-center items-center sticky top-10 h-[calc(100vh-5rem)]"
-            >
-
+          >
             <img
               src={image}
               alt={title}
@@ -52,10 +55,11 @@ const DetailLayout = ({
           />
         </div> */}
       </div>
-
       {/* Mobile View */}
-      <div className="md:hidden flex flex-col items-center bg-[#c88d84] w-screen -ml-12">
-      <motion.div
+      <div className="md:hidden flex flex-col items-center bg-[#c88d84] w-screen -ml-12 relative">
+        <BackButton  />
+        \{" "}
+        <motion.div
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           initial={{ opacity: 0, y: -50 }}
@@ -65,21 +69,21 @@ const DetailLayout = ({
           <img
             src={image}
             alt={title}
-            className="flex justify-center items-center  top-10 w-4/5    rounded-full  mt-[2rem]"          />
+            className="flex justify-center items-center  top-10 w-4/5    rounded-full  mt-[2rem]"
+          />
         </motion.div>
         <motion.div
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1 }}
           initial={{ opacity: 0, scale: 0.8, y: 130 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          className="flex-1 flex flex-col gap-4 w-screen rounded-3xl  bg-[#e4c2bd] px-10 pt-3"
+          className="flex-1 flex flex-col gap-4 w-screen rounded-3xl mt-4  bg-[#e4c2bd] px-10 pt-3"
         >
           <h1 className="text-2xl font-bold mt-20">{title}</h1>
           <p className="text-gray-600">{description}</p>
 
           <div className="mt-4">{children}</div>
         </motion.div>
-
         <div className="hidden md:flex-1 md:flex md:flex-col md:gap-4 ">
           <h1 className="text-2xl font-bold">{title}</h1>
           <p className="text-gray-600">{description}</p>

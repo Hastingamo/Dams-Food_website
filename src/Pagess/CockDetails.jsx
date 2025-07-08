@@ -10,13 +10,15 @@ function CockDetails() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("instructions");
   const [quantity, setQuantity] = useState(1);
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState("");
 
-const getRandomPrice = (id) => {
-  const base = parseInt(id.slice(-5), 10) || Math.floor(Math.random() * 9000) + 1000;
-  const price = 1000 + (base % 9000); // ensures value is between 1000 and 9999
-  return Math.round(price);
-};
-
+  const getRandomPrice = (id) => {
+    const base =
+      parseInt(id.slice(-5), 10) || Math.floor(Math.random() * 9000) + 1000;
+    const price = 1000 + (base % 9000); // ensures value is between 1000 and 9999
+    return Math.round(price);
+  };
 
   useEffect(() => {
     const fetchCocktailDetails = async () => {
@@ -39,6 +41,13 @@ const getRandomPrice = (id) => {
     };
     fetchCocktailDetails();
   }, [id]);
+  useEffect(() => {
+    if (cockTailss?.idDrink) {
+      const saved =
+        JSON.parse(localStorage.getItem(`reviews_${cockTailss.idDrink}`)) || [];
+      setReviews(saved);
+    }
+  }, [cockTailss]);
 
   if (loading)
     return (
@@ -71,22 +80,54 @@ const getRandomPrice = (id) => {
   };
   const renderTabContent = () => {
     switch (activeTab) {
-      //ase "video":
-      //   return cockTailss.strYoutube ? (
-      //     <div>
-      //       <h2 className="text-lg font-semibold">Video Instructions:</h2>
-      //       <iframe
-      //         className="mt-4"
-      //         width="100%"
-      //         height="315"
-      //         src={cockTailss.strYoutube.replace("watch?v=", "embed/")}
-      //         title={cockTailss.strDrink}
-      //         allowFullScreen
-      //       ></iframe>
-      //     </div>
-      //   ) : (
-      //     <p>No video available.</p>
-      //   );
+      case "video":
+        return (
+          <div>
+            <h1></h1>
+            <form
+              className="space-y-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const trimmed = newReview.trim();
+                if (!trimmed) return;
+
+                if (reviews.length > 0) {
+                  alert("You have already submitted a review for this meal.");
+                  return;
+                }
+
+                const updatedReviews = [trimmed];
+                setReviews(updatedReviews);
+                localStorage.setItem(
+                  `reviews_${cockTailss.idDrink}`,
+                  JSON.stringify(updatedReviews)
+                );
+                setNewReview("");
+              }}
+            >
+              {reviews.length > 0 ? (
+                <p className="text-green-600 font-medium">
+                  You have already submitted a review.
+                </p>
+              ) : (
+                <>
+                  <textarea
+                    className="w-full border rounded p-2"
+                    placeholder="Write your review here..."
+                    value={newReview}
+                    onChange={(e) => setNewReview(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    className="bg-black text-white px-4 py-2 rounded"
+                  >
+                    Submit Review
+                  </button>
+                </>
+              )}
+            </form>
+          </div>
+        );
 
       default:
         return (
@@ -144,6 +185,14 @@ const getRandomPrice = (id) => {
           onClick={() => setActiveTab("order")}
         >
           Place Order
+        </button>
+        <button
+          className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+            activeTab === "order" ? "bg-gray-300" : ""
+          }`}
+          onClick={() => setActiveTab("Review")}
+        >
+          Review
         </button>
         {/* <button
           className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${

@@ -12,6 +12,7 @@ import Dashboard from "./Pagess/Dashboard";
 import PrivateLayOut from "./PrivateLayOut";
 import AddTochart from "./Pagess/AddTochart";
 import CheckOut from "./Pagess/CheckOut";
+import SafeTOLater from "./Pagess/SafeTOLater";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
         
             <Route path="/SignUp" element={<SignUp />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/SafeTOLater" element={<SafeTOLater/>} />
 
             <Route path="/Authentication" element={<Authentication />} />
             <Route path="*" element={<h1>404</h1>} />
