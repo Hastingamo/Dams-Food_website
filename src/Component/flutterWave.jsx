@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FlutterWaveButton, closePaymentModal } from 'flutterwave-react-v3';
 import FireBaseUser from './FireBaseUser';
 
-function FlutterWave({ onPaymentSuccess }) {
+function FlutterWave({ onPaymentSuccess, handleCheckout, clasName }) {
   const user = FireBaseUser();
   const [total, setTotal] = useState(0);
 
@@ -16,6 +16,10 @@ function FlutterWave({ onPaymentSuccess }) {
       setTotal(totalAmount);
     }
   }, []);
+  const onCheckout = () => {
+    handleCheckout(); 
+
+  };
 
   const config = {
     public_key: 'FLWPUBK_TEST-591f4111d5e295abc6ad7a6028080b3c-X',
@@ -38,13 +42,14 @@ function FlutterWave({ onPaymentSuccess }) {
     ...config,
     text: 'Pay with Flutterwave!',
     callback: (response) => {
-      if (response.status === 'successful') {
-        console.log('Payment successful:', response);
-        if (onPaymentSuccess) {
-          onPaymentSuccess(); // ✅ call passed-in function to clear cart
-        }
+      if (response.status !== 'completed') {
+        console.log('Payment failed:', response);
+
       } else {
-        console.error('Payment failed:', response);
+        console.error('Payment successful:', response);
+             if (onPaymentSuccess) {
+          onPaymentSuccess(); 
+        }
       }
       closePaymentModal(); // Close the modal after handling
     },
@@ -52,7 +57,7 @@ function FlutterWave({ onPaymentSuccess }) {
   };
 
   return (
-    <div>
+    <div onClick={onCheckout} className={clasName}>
       <FlutterWaveButton {...fwConfig} />
     </div>
   );

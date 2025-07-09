@@ -13,6 +13,7 @@ import PrivateLayOut from "./PrivateLayOut";
 import AddTochart from "./Pagess/AddTochart";
 import CheckOut from "./Pagess/CheckOut";
 import SafeTOLater from "./Pagess/SafeTOLater";
+import Order from "./Pagess/Order";
 function App() {
   return (
     <>
@@ -39,6 +40,7 @@ function App() {
             <Route path="/foodDetails" element={<FoodDetials />} />
             <Route path="AddToChart" element={<AddTochart/>} />
             <Route path="/CheckOut" element={<CheckOut/>} />
+            <Route path="Order" element={<Order/>} />
           </Route>
         </Routes>
       </Router>

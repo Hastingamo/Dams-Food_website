@@ -206,7 +206,7 @@ const Sidebars = () => {
         >
           <img
             className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/user.png"
+            src="Images/heart.png"
             alt=""
           />
           <h1
@@ -216,6 +216,26 @@ const Sidebars = () => {
             onClick={() => navigate("/SafeTOLater")}
           >
             Safe for later
+          </h1>
+
+        </div>
+                 <div
+          className="flex items-center space-x-2 group"
+          onMouseEnter={() => setIsOpen(true)}
+          onMouseLeave={() => setIsOpen(false)}
+        >
+          <img
+            className="w-6 h-6 text-white group-hover:text-blue-400"
+            src="Images/heart.png"
+            alt=""
+          />
+          <h1
+            className={`text-black text-lg group-hover:block ${
+              isOpen ? "block" : "hidden"
+            }`}
+            onClick={() => navigate("/Order")}
+          >
+            Order
           </h1>
 
         </div>

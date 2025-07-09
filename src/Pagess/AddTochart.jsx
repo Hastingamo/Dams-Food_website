@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebars from "../Component/Sidebars";
 import DeleteModal from "../Component/DeleteModal";
 import FlutterWave from "../Component/flutterWave";
+import Order from "./Order";
 
 function AddTochart() {
   const [cart, setCart] = useState([]);
@@ -17,6 +18,7 @@ function AddTochart() {
   const handleCheckout = () => {
     localStorage.setItem("checkoutCart", JSON.stringify(cart));
     localStorage.setItem("totalAmount", getTotal());
+    // Move cart items to "orders" in localStorage
   };
 
   const handleDelete = (id) => {
@@ -34,7 +36,6 @@ function AddTochart() {
       quantity: item.quantity,
     };
 
-    // Get existing saved items
     const savedItems = JSON.parse(localStorage.getItem("safeItems")) || [];
 
     // Add the new item to the saved list
@@ -48,13 +49,17 @@ function AddTochart() {
   };
 
   const handlePaymentSuccess = () => {
+    const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedOrders = [...existingOrders, ...currentCart];
+    localStorage.setItem("orders", JSON.stringify(updatedOrders));
     setCart([]);
 
     localStorage.removeItem("cart");
     localStorage.removeItem("checkoutCart");
     localStorage.removeItem("totalAmount");
 
-    alert("Payment successful! Your cart has been cleared.");
+    alert("Payment successful! Your order has been placed.");
   };
 
   return (
