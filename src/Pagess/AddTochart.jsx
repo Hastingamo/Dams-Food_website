@@ -77,7 +77,7 @@ function AddTochart() {
                   {cart.map((item) => (
                     <div
                       key={item.id}
-                      className="grid grid-cols-3 items-center mb-4 gap-4 bg-gradient-to-bl from-[#8e5047] to-fuchsia-50 p-4 xl:ml-32"
+                      className="grid grid-cols-2 xs:grid-cols-3 items-center mb-4 gap-4 bg-gradient-to-bl from-[#8e5047] to-fuchsia-50 p-4 xl:ml-32"
                     >
                       <img
                         src={item.image}
@@ -87,9 +87,58 @@ function AddTochart() {
                       <div className="md:text-2xl">
                         <h2>{item.title}</h2>
                         <p>NGN:{item.price}</p>
+                        <div  className="flex flex-row xs:hidden gap-3">
+                          <div className="mt-8  -ml-5">
+                            <DeleteModal
+                              onDelete={() => handleDelete(item.id)}
+                              onSafeForLater={() => handleSaveForLater(item)}
+                            />
+                          </div>
+                           <div className="flex flex-row gap-4 mt-4">
+                          <button
+                            className="p-2 border rounded"
+                            onClick={() =>
+                              setCart((prev) =>
+                                prev.map((cartItem) =>
+                                  cartItem.id === item.id
+                                    ? {
+                                        ...cartItem,
+                                        quantity: Math.max(
+                                          1,
+                                          cartItem.quantity - 1
+                                        ),
+                                      }
+                                    : cartItem
+                                )
+                              )
+                            }
+                          >
+                            -
+                          </button>
+                          <p className="mt-2">{item.quantity}</p>
+                          <button
+                            className="p-2 border rounded"
+                            onClick={() =>
+                              setCart((prev) =>
+                                prev.map((cartItem) =>
+                                  cartItem.id === item.id
+                                    ? {
+                                        ...cartItem,
+                                        quantity: cartItem.quantity + 1,
+                                      }
+                                    : cartItem
+                                )
+                              )
+                            }
+                          >
+                            +
+                          </button>
+                        </div>
+                        </div>
                       </div>
-                      <div className="text-right">
-                        <div className="ml-[50px] md:ml-[110px] xl:ml-[250px]">
+
+                      <div className="text-right hidden xs:flex  xs:flex-col">
+                        <div className="ml-20 xs:ml-[50px] md:ml-[110px] xl:ml-[250px]">
                           <DeleteModal
                             onDelete={() => handleDelete(item.id)}
                             onSafeForLater={() => handleSaveForLater(item)}

@@ -134,7 +134,7 @@ function Foods() {
                   className={`px-3 py-1 rounded border ${
                     selectedCategory === cat.strCategory
                       ? "bg-black text-white"
-                      : "bg-linear-to-bl from-[#c88d84]-700 to-fuchsia-50  text-[#]"
+                      : "bg-gradient-to-bl from-[#8e5047] to-fuchsia-50 text-[#]"
                   }`}
                   onClick={() => filterByCategory(cat.strCategory)}
                 >
@@ -151,7 +151,7 @@ function Foods() {
 
             {error && <p className="text-red-600">{error}</p>}
 
-            <div className="grid ml-11  grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6 px-5">
+            <div className="grid ml-8  xs:ml-11  grid-cols-2 xm:grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-6 px-1  md:px-5">
               {meals.map((meal, index) => (
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -164,7 +164,7 @@ function Foods() {
                   }}
                   key={meal.idMeal}
                   transition={{ duration: 1, delay: index * 0.05 }}
-                  className="bg-linear-to-bl from-[#8e5047]-700 to-fuchsia-50  rounded-lg  shadow-md hover:shadow-lg transition"
+                  className="bg-gradient-to-bl from-[#8e5047] to-fuchsia-50 rounded-lg  shadow-md hover:shadow-lg transition"
                 >
                   <Link to={`/food/${meal.idMeal}`}>
                     <img

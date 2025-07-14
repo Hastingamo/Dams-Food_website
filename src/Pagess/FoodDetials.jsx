@@ -250,7 +250,7 @@ function FoodDetails() {
         description={`Category: ${meal.strCategory} | Area: ${meal.strArea}`}
         details={[]}
       >
-        <div className="flex gap-4 mb-4">
+        <div className="flex flex-wrap   gap-4 mb-4">
           <button
             className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
               activeTab === "instructions" ? "bg-gray-300" : ""

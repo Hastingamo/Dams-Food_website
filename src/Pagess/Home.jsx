@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 import Sidebars from "../Component/Sidebars";
 import { MoonLoader } from "react-spinners";
 import { motion } from "framer-motion";
-
+import { useNavigate } from "react-router";
 function Home() {
   const [loading, setLoading] = useState(true);
   const [image, setImage] = useState([]);
   const [featuredImage, setFeaturedImage] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
+    // fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category")
       .then((response) => response.json())
       .then((data) => {
         if (data.meals) {
@@ -45,7 +46,7 @@ function Home() {
         </div>
       ) : (
         <>
-          <div className="flex flex-row w-full h-[40rem] md:h-screen lg:h-[37rem]">
+          <div className="flex flex-row w-full h-[40rem] Tt:hidden md:h-screen lg:h-[37rem]">
             {/* Left Section */}
             <div className="w-2/3 md:ml-[5rem] bg-blue-200 pl-8 pt-[4rem]  pb-[4rem] md:pt-[2rem] md;pb-[2rem]">
               <motion.div
@@ -53,16 +54,16 @@ function Home() {
                 transition={{ duration: 2 }}
                 initial={{ opacity: 0, scale: 0.8, x: -130 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                className="shadow-2xl h-full  md:pt-30 lg:pt-48 xl:pt-10 gap-3"
+                className="shadow-2xl h-full pt-10 md:pt-30 lg:pt-48 xl:pt-10 gap-3"
               >
-                <h1 className="text-6xl md:text-8xl font-bold ml-4 text-white w-fit  pt-12 md:pt-2">
+                <h1 className="text-5xl md:text-8xl font-bold ml-4 text-white w-fit  pt-12 md:pt-2">
                   Food{" "}
                 </h1>
                 <p className="text-white ml-4 md:text-2xl">is your good </p>
-                <h1 className="text-6xl md:text-8xl font-bold ml-4 text-white w-fit">
-                  Mood
+                <h1 className="text-5xl md:text-8xl font-bold ml-4 text-white w-fit">
+                  Mude
                 </h1>
-                <div className="mt-14 w-fit shadow-md ml-10 ">
+                <div className="mt-10 md:mt-14 w-fit  shadow-md ml-5 md:ml-10 ">
                   <h1 className="text-2xl font-bold text-white">
                     Welcome to Food Mood
                   </h1>
@@ -72,9 +73,9 @@ function Home() {
                   {featuredImage ? (
                     <div
                       key={featuredImage.idMeal}
-                      className="flex flex-col items-center"
+                      className="flex flex-col items-center pt-2 pb-2"
                     >
-                      <h2 className="text-xl font-bold mt-2">
+                      <h2 className="text-xl font-bold mt-2" onClick={() => navigate("/foods")}>
                         {featuredImage.strMeal}
                       </h2>
                     </div>
@@ -107,7 +108,7 @@ function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       src={featuredImage.strMealThumb}
                       alt={featuredImage.strMeal}
-                      className="w-[10rem] md:w-[25rem] h-auto rounded-full shadow-lg mt-4"
+                      className="w-[10rem] md:w-[25rem] h-auto rounded-full shadow-lg mt-16 md:mt-10"
                     />
              
                   </div>
