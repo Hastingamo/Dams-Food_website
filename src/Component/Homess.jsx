@@ -3,7 +3,7 @@ import Sidebars from "../Component/Sidebars";
 import { MoonLoader } from "react-spinners";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
-function Home() {
+function Homess() {
   const [loading, setLoading] = useState(true);
   const [image, setImage] = useState([]);
   const [featuredImage, setFeaturedImage] = useState(null);
@@ -46,7 +46,9 @@ function Home() {
         </div>
       ) : (
         <>
-          <div className="flex flex-row w-full h-[40rem] Tt:hidden md:h-screen lg:h-[37rem]">
+
+          {/* mobile */},
+          <div className="flex flex-row w-full h-screen ">
             {/* Left Section */}
             <div className="w-2/3 md:ml-[5rem] bg-blue-200 pl-8 pt-[4rem]  pb-[4rem] md:pt-[2rem] md;pb-[2rem]">
               <motion.div
@@ -124,4 +126,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Homess;

@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (orientation: landscape) {
+  .hide-in-landscape {
+    display: none;
+  }
+}

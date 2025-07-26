@@ -1,5 +1,4 @@
 import LayOut from "./LayOut";
-import Home from "./Pagess/Home";
 import CockTailss from "./Pagess/CockTailss";
 import CockDetails from "./Pagess/CockDetails";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -14,14 +13,15 @@ import AddTochart from "./Pagess/AddTochart";
 import CheckOut from "./Pagess/CheckOut";
 import SafeTOLater from "./Pagess/SafeTOLater";
 import Order from "./Pagess/Order";
+import Hom from "./Pagess/Hom";
 function App() {
   return (
     <>
       <Router>
         <Routes>
           <Route path="/" element={<LayOut />}>
-            <Route index element={<Home />} />
-            <Route path="/Home" element={<Home />} />
+            <Route index element={<Hom />} />
+            <Route path="/Home" element={<Hom/>} />
             <Route path="/food" element={<Foods />} />
             <Route path="/cocktails" element={<CockTailss />} />
         
