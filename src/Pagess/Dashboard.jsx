@@ -4,9 +4,16 @@ import { useNavigate } from "react-router";
 import UserLogOut from "../auth/UserLogOut";
 function Dashboard() {
   const navigate = useNavigate();
-    const { error, LogOut } = UserLogOut();
+  const { LogOut } = UserLogOut();
 
-const handleLogout = async () => {
+  // React.useEffect(() => {
+  //   const isAuthenticated = !!localStorage.getItem("user");
+  //   if (!isAuthenticated) {
+  //     navigate("/Authentication");
+  //   }
+  // }, [navigate]);
+
+  const handleLogout = async () => {
     const { success, error } = await LogOut();
     if (success) {
       navigate("/");
@@ -24,7 +31,10 @@ const handleLogout = async () => {
             This is your dashboard where you can manage your account and view
             your data.
           </p>
-          <button onClick={handleLogout} className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          <button
+            onClick={handleLogout}
+            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
             logout{" "}
           </button>
         </div>

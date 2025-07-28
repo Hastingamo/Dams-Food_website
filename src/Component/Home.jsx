@@ -10,7 +10,7 @@ function Home() {
   const navigate = useNavigate();
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
-    // fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category")
+      // fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category")
       .then((response) => response.json())
       .then((data) => {
         if (data.meals) {
@@ -46,9 +46,7 @@ function Home() {
         </div>
       ) : (
         <>
-
-          {/* mobile */}
-          <div className="flex flex-row w-full h-screen">
+  <div className="flex flex-row w-full h-[40rem] Tt:hidden md:h-screen lg:h-[37rem]">
             {/* Left Section */}
             <div className="w-2/3 md:ml-[5rem] bg-blue-200 pl-8 pt-[4rem]  pb-[4rem] md:pt-[2rem] md;pb-[2rem]">
               <motion.div
@@ -77,7 +75,7 @@ function Home() {
                       key={featuredImage.idMeal}
                       className="flex flex-col items-center pt-2 pb-2"
                     >
-                      <h2 className="text-xl font-bold mt-2" onClick={() => navigate("/foods")}>
+                      <h2 className="text-xl font-bold mt-2" onClick={() => navigate("/food")}>
                         {featuredImage.strMeal}
                       </h2>
                     </div>

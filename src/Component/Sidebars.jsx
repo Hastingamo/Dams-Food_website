@@ -155,9 +155,8 @@ const Sidebars = () => {
             }`}
             onClick={() => navigate("/Dashboard")}
           >
-           Profile
+            Profile
           </h1>
-
         </div>
         <div
           className="flex items-center space-x-2 group"
@@ -177,29 +176,9 @@ const Sidebars = () => {
           >
             cart
           </h1>
-
         </div>
+
         <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/user.png"
-            alt=""
-          />
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/")}
-          >
-            Profile
-          </h1>
-
-        </div>
-         <div
           className="flex items-center space-x-2 group"
           onMouseEnter={() => setIsOpen(true)}
           onMouseLeave={() => setIsOpen(false)}
@@ -217,9 +196,8 @@ const Sidebars = () => {
           >
             Safe for later
           </h1>
-
         </div>
-                 <div
+        <div
           className="flex items-center space-x-2 group"
           onMouseEnter={() => setIsOpen(true)}
           onMouseLeave={() => setIsOpen(false)}
@@ -237,7 +215,6 @@ const Sidebars = () => {
           >
             Order
           </h1>
-
         </div>
       </nav>
     </div>

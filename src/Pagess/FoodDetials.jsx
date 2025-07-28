@@ -110,7 +110,11 @@ function FoodDetails() {
           <div>
             <h2 className="text-lg font-semibold">Order:</h2>
             <h2 className="text-lg font-semibold text-black-600">
-              Price: NGN:{meal.randomPrice}
+              Price:{" "}
+              {new Intl.NumberFormat("en-NG", {
+                style: "currency",
+                currency: "NGN",
+              }).format(meal.randomPrice)}
             </h2>
             <div className="flex gap-2 mt-2 items-center">
               <button
@@ -145,7 +149,6 @@ function FoodDetails() {
         );
       case "Review":
         return (
-
           <div className="space-y-4">
             <h2 className="text-lg font-semibold">Add Your Review:</h2>
             <form

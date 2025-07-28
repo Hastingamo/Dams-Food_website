@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Home from "../Component/Home";
-import Homess from "../Component/Homess";
+import Homess from "./Homess";
 
 function Homes() {
   const [isLandscape, setIsLandscape] = useState(false);
@@ -33,12 +32,11 @@ function Homes() {
 
   return (
     <>
-      <div className="flex md:hidden">
-        <Home />
+      <div className="flex xl:hidden">
+              < Homess/>
+
       </div>
-      <div className="hidden md:flex lg:hidden xl:hidden">
-        <Homess />
-      </div>
+  
 
     </>
   );

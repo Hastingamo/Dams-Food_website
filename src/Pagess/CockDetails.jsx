@@ -45,7 +45,7 @@ function CockDetails() {
     if (cockTailss?.idDrink) {
       const saved =
         JSON.parse(localStorage.getItem(`reviews_${cockTailss.idDrink}`)) || [];
-      setReviews(saved);  
+      setReviews(saved);
     }
   }, [cockTailss]);
 
@@ -134,7 +134,11 @@ function CockDetails() {
           <div>
             <h2 className="text-lg font-semibold">Order:</h2>
             <h2 className="text-lg font-semibold text-black-600">
-              Price: NGN: {cockTailss.randomPrice}
+              Price:{" "}
+              {new Intl.NumberFormat("en-NG", {
+                style: "currency",
+                currency: "NGN",
+              }).format(cockTailss.randomPrice)}
             </h2>
             <div className="flex gap-2 mt-2">
               <button
@@ -163,8 +167,7 @@ function CockDetails() {
                 alt="arrow"
               />
               Add to Cart
-            </button>            
-
+            </button>
           </div>
         );
     }

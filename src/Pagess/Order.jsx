@@ -12,7 +12,7 @@ function Order() {
     <>
         <div className='flex flex-row items-center justify-center h-screen bg-[#C88D84]'>
             <Sidebars/>
-            <div>
+            <div className='w-screen ml-[80px] h-screen'>
                 <h1 className='text-2xl font-bold mb-4 text-center'>Order</h1>
                 <div className='pt-8 md:px-[2rem] rounded-lg shadow-lg  w-full'>
                     <div className='p-4'>

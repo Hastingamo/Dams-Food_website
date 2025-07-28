@@ -1,15 +1,14 @@
 import React from 'react'
+// import Homess from '../Component/Homess'
+import Home from '../Component/Home'
 import Homes from '../Component/Homes'
-import Homess from '../Component/Homess'
-
 function Hom() {
   return (
     <>
-      <div className='flex xl:hidden'>
-        <Homes/>
-      </div>
-      <div className='hidden xl:flex xl:flex-row'>
-          <Homess/>
+
+
+      <div >
+          <Home/>
       </div>
     </>
   )
