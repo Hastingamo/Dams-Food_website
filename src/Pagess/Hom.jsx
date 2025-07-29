@@ -5,12 +5,9 @@ import Homes from "../Component/Homes";
 function Hom() {
   return (
     <>
-<div  className="hidden xl:flex">
+
         <Home />
-      </div>
-      <div className="flex xl:hidden">
-        <Homes/>
-      </div>
+
 
     </>
   );
