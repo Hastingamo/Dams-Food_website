@@ -10,7 +10,6 @@ import Authentication from "./Pagess/Authentication";
 import Dashboard from "./Pagess/Dashboard";
 import PrivateLayOut from "./PrivateLayOut";
 import AddTochart from "./Pagess/AddTochart";
-import CheckOut from "./Pagess/CheckOut";
 import SafeTOLater from "./Pagess/SafeTOLater";
 import Order from "./Pagess/Order";
 import Hom from "./Pagess/Hom";
