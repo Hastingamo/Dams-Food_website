@@ -8,12 +8,12 @@ function Authentication() {
   const handleToggle = () => {
     setToggle(!toggle);
   };
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, []);
   // const [isLandscape, setIsLandscape] = useState(false);
 
   // useEffect(() => {

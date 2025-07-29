@@ -87,7 +87,7 @@ function SignUp(props) {
   };
 
   return (
-    <div className="flex flex-row  h-screen w-full  overflow-hidden">
+    <div className="flex flex-row min-h-screen w-full overflow-auto">
       <div className="fixed top-0 left-0 h-fit w-[86px] z-10">
         {/* <Sidebars /> */}
       </div>{" "}
@@ -104,9 +104,14 @@ function SignUp(props) {
               Welcome Back!
             </h1>
             <p className="text-gray-600 text-[15px] md:text-[18px] lg:text-2xl text-center mt-4 md:mt-8">
-              enter your personal <br/>detail and <br/>start your journey
+              enter your personal <br />
+              detail and <br />
+              start your journey
             </p>
-            <p className="text-[15px] mt-8 md:text-[18px] lg:text-2xl text-center"> Already registered?</p>
+            <p className="text-[15px] mt-8 md:text-[18px] lg:text-2xl text-center">
+              {" "}
+              Already registered?
+            </p>
             <button
               onClick={props.toggleLogin}
               className=" underline mt-4 ml-4 md:ml-8 lg:ml-12  bg-[#f7f4f4]  hover:bg-blue-800 text-black font-bold py-2 px-4 rounded flex justify-center items-center w-1/2"
@@ -123,7 +128,7 @@ function SignUp(props) {
           className="flex w-2/3  p-8  xl:p-0 bg-[#F9E4DA] "
         >
           {" "}
-          <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] text-black xl:overflow-y-hidden"> 
+          <section className="w-full max-w-md h-fit flex flex-col gap-4 lg:ml-[4rem]  xl:ml-[10rem] text-black xl:overflow-y-hidden">
             <p
               ref={errRef}
               className={errMsg ? "errmsg text-red-600" : "offscreen"}

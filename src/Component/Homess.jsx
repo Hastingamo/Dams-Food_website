@@ -10,7 +10,7 @@ function Homess() {
   const navigate = useNavigate();
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=")
-    // fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category")
+      // fetch("https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category")
       .then((response) => response.json())
       .then((data) => {
         if (data.meals) {
@@ -45,10 +45,9 @@ function Homess() {
           <MoonLoader color="black" size={100} />
         </div>
       ) : (
-        <>
-
+        <div>
           {/* mobile */},
-          <div className="flex flex-row w-full h-screen ">
+          <div className="w-screen h-screen flex flex-col bg-white overflow-hidden">
             {/* Left Section */}
             <div className="w-2/3 md:ml-[5rem] bg-blue-200 pl-8 pt-[4rem]  pb-[4rem] md:pt-[2rem] md;pb-[2rem]">
               <motion.div
@@ -56,7 +55,7 @@ function Homess() {
                 transition={{ duration: 2 }}
                 initial={{ opacity: 0, scale: 0.8, x: -130 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                className="shadow-2xl h-full pt-10 md:pt-30 lg:pt-48 xl:pt-10 gap-3"
+                className="shadow-2xl h-full pt-10 md:pt-30 lg:pt-48  gap-3"
               >
                 <h1 className="text-5xl md:text-8xl font-bold ml-4 text-white w-fit  pt-12 md:pt-2">
                   Food{" "}
@@ -77,7 +76,10 @@ function Homess() {
                       key={featuredImage.idMeal}
                       className="flex flex-col items-center pt-2 pb-2"
                     >
-                      <h2 className="text-xl font-bold mt-2" onClick={() => navigate("/foods")}>
+                      <h2
+                        className="text-xl font-bold mt-2"
+                        onClick={() => navigate("/foods")}
+                      >
                         {featuredImage.strMeal}
                       </h2>
                     </div>
@@ -101,7 +103,7 @@ function Homess() {
                 {featuredImage ? (
                   <div
                     key={featuredImage.idMeal}
-                    className="flex flex-col -ml-[8rem] md:-ml[10rem] lg: xl:-ml-[40rem] items-center"
+                    className="flex flex-col -ml-[8rem] md:-ml[10rem]  items-center"
                   >
                     <motion.img
                       animate={{ opacity: 1, y: 0 }}
@@ -112,7 +114,6 @@ function Homess() {
                       alt={featuredImage.strMeal}
                       className="w-[10rem] md:w-[25rem] h-auto rounded-full shadow-lg mt-16 md:mt-10"
                     />
-             
                   </div>
                 ) : (
                   <p>No Image Available</p>
@@ -120,7 +121,7 @@ function Homess() {
               </motion.div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
