@@ -92,7 +92,7 @@ function SignUp(props) {
         {/* <Sidebars /> */}
       </div>{" "}
       <div className=" flex  w-[100%]">
-        <div className="flex  w-4/12 h-screen gap-4">
+        <div className="flex  w-4/12  min-h-screen gap-4">
           <motion.div
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 2 }}
