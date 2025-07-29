@@ -49,7 +49,7 @@ function App() {
                 <Route path="/food/:id" element={<FoodDetials />} />
                 <Route path="/foodDetails" element={<FoodDetials />} />
                 <Route path="AddToChart" element={<AddTochart />} />
-                <Route path="/CheckOut" element={<CheckOut />} />
+
                 <Route path="Order" element={<Order />} />
               </Route>
             </Routes>
