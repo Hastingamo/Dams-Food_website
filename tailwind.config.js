@@ -9,6 +9,7 @@ export default {
     extend: {
       screens: {
         'xs': '420px',
+        'sm': '340px',
         'Tt': {min: '1100px', max: '1300px'},
         'Ts': {min: '1500px', max: '2000px'},  
         'lls' :'1300px',

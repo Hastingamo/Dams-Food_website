@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const Sidebars = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false); // Start with the sidebar collapsed
@@ -53,12 +53,22 @@ const Sidebars = () => {
 
       <nav className="flex flex-col space-y-4 px-4 mt-8 gap-4">
         {/* Dashboard Link */}
-        <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.05,
+            duration: 0.1,
+          }}
+          // transition={{ duration: 1, delay: 0.05 }}
         >
-          {/* <svg
+          <div
+            className="flex items-center space-x-2 group"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+          >
+            {/* <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -72,150 +82,211 @@ const Sidebars = () => {
               d="M3 12l2 2 4-4m0 0l4 4 2-2"
             />
           </svg> */}
-          {/* <span
+            {/* <span
             className={`text-white text-lg group-hover:block ${
               isOpen ? "block" : "hidden"
             }`}
           >
             Home
           </span> */}
-          <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/home.png"
-            alt=""
-          />
+            <img
+              className="w-6 h-6 text-white group-hover:text-blue-400"
+              src="Images/home.png"
+              alt=""
+            />
 
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/Home")}
+            <h1
+              className={`text-black text-lg group-hover:block ${
+                isOpen ? "block" : "hidden "
+              }`}
+              onClick={() => navigate("/Home")}
+            >
+              Home
+            </h1>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.05,
+            duration: 0.1,
+          }}
+        >
+          <div
+            className="flex items-center space-x-2 group"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
           >
-            Home
-          </h1>
-        </div>
+            <img
+              className="w-6 h-6 text-white group-hover:text-blue-400"
+              src="Images/tray.png"
+              alt=""
+            />
 
-        {/* Movies Link */}
-        <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/tray.png"
-            alt=""
-          />
+            <h1
+              className={`text-black text-lg group-hover:block ${
+                isOpen ? "block" : "hidden"
+              }`}
+              onClick={() => navigate("/food")}
+            >
+              Food
+            </h1>
+          </div>
+        </motion.div>
 
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/food")}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.05,
+            duration: 0.1,
+          }}
+        >
+          {" "}
+          <div
+            className="flex items-center space-x-2 group"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
           >
-            Food
-          </h1>
-        </div>
+            <img
+              className="w-6 h-6 text-black group-hover:text-blue-400"
+              src="Images/cocktail.png"
+              alt=""
+            />
+            <h1
+              className={`text-black text-lg group-hover:block ${
+                isOpen ? "block" : "hidden"
+              }`}
+              onClick={() => navigate("/cocktails")}
+            >
+              cockTail
+            </h1>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.05,
+            duration: 0.1,
+          }}
+        >
+          {" "}
+          <div
+            className="flex items-center space-x-2 group"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+          >
+            <img
+              className="w-6 h-6 text-white group-hover:text-blue-400"
+              src="Images/user.png"
+              alt=""
+            />
+            <h1
+              className={`text-black text-lg group-hover:block ${
+                isOpen ? "block" : "hidden"
+              }`}
+              onClick={() => navigate("/Dashboard")}
+            >
+              Profile
+            </h1>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.05,
+            duration: 0.1,
+          }}
+        >
+          {" "}
+          <div
+            className="flex items-center space-x-2 group"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+          >
+            <img
+              className="w-6 h-6 text-white group-hover:text-blue-400"
+              src="Images/shoppingCart.png"
+              alt=""
+            />
+            <h1
+              className={`text-black text-lg group-hover:block ${
+                isOpen ? "block" : "hidden"
+              }`}
+              onClick={() => navigate("/AddToChart")}
+            >
+              cart
+            </h1>
+          </div>
+        </motion.div>
 
-        {/* TV Shows Link */}
-
-        {/* Settings Link */}
-        <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.05,
+            duration: 0.1,
+          }}
         >
-          <img
-            className="w-6 h-6 text-black group-hover:text-blue-400"
-            src="Images/cocktail.png"
-            alt=""
-          />
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/cocktails")}
+          {" "}
+          <div
+            className="flex items-center space-x-2 group"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
           >
-            cockTail
-          </h1>
-        </div>
-        <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
+            <img
+              className="w-6 h-6 text-white group-hover:text-blue-400"
+              src="Images/heart.png"
+              alt=""
+            />
+            <h1
+              className={`text-black text-lg group-hover:block ${
+                isOpen ? "block" : "hidden"
+              }`}
+              onClick={() => navigate("/SafeTOLater")}
+            >
+              Safe for later
+            </h1>
+          </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          whileHover={{
+            scale: 1.05,
+            duration: 0.1,
+          }}
         >
-          <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/user.png"
-            alt=""
-          />
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/Dashboard")}
+          {" "}
+          <div
+            className="flex items-center space-x-2 group"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
           >
-            Profile
-          </h1>
-        </div>
-        <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/shoppingCart.png"
-            alt=""
-          />
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/AddToChart")}
-          >
-            cart
-          </h1>
-        </div>
-
-        <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/heart.png"
-            alt=""
-          />
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/SafeTOLater")}
-          >
-            Safe for later
-          </h1>
-        </div>
-        <div
-          className="flex items-center space-x-2 group"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <img
-            className="w-6 h-6 text-white group-hover:text-blue-400"
-            src="Images/heart.png"
-            alt=""
-          />
-          <h1
-            className={`text-black text-lg group-hover:block ${
-              isOpen ? "block" : "hidden"
-            }`}
-            onClick={() => navigate("/Order")}
-          >
-            Order
-          </h1>
-        </div>
+            <img
+              className="w-6 h-6 text-white group-hover:text-blue-400"
+              src="Images/heart.png"
+              alt=""
+            />
+            <h1
+              className={`text-black text-lg group-hover:block ${
+                isOpen ? "block" : "hidden"
+              }`}
+              onClick={() => navigate("/Order")}
+            >
+              Order
+            </h1>
+          </div>
+        </motion.div>
       </nav>
     </div>
   );

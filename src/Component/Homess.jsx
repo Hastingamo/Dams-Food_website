@@ -37,7 +37,7 @@ function Homess() {
   //   };
   // }, []);
 
-  return (
+return (
     <div className="flex flex-row  h-fit">
       {/* <Sidebars /> */}
       {loading ? (

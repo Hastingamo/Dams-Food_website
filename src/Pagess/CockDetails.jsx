@@ -142,7 +142,7 @@ function CockDetails() {
             </h2>
             <div className="flex gap-2 mt-2">
               <button
-                className="p-2 border"
+                className="p-2 border hover:scale-105 duration-300"
                 onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
               >
                 -
@@ -159,7 +159,7 @@ function CockDetails() {
 
             <button
               onClick={handleAddToCart}
-              className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2"
+              className="bg-[#f9f9f9] text-black py-3 px-10 rounded-md mt-5 flex items-center gap-2 hover:scale-105 duration-300"
             >
               <img
                 src="/Images/shoppingCart.png"
@@ -187,7 +187,8 @@ function CockDetails() {
         >
           Instructions
         </button> */}
-        <button
+        <div className="hover:scale-105 duration-300 ">
+                  <button
           className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
             activeTab === "order" ? "bg-gray-300" : ""
           }`}
@@ -195,6 +196,8 @@ function CockDetails() {
         >
           Place Order
         </button>
+          </div>
+
 
         {/* <button
           className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${

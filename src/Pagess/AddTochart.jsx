@@ -198,7 +198,7 @@ function AddTochart() {
                   <h2 className="mt-4 text-xl font-bold text-center">
                     Total: {formatCurrency(getTotal())}
                   </h2>
-                  <button className="mt-4  bg-gradient-to-bl from-[#8e5047] to-fuchsia-50 text-white px-4 py-2 rounded block mx-auto">
+                  <button className="mt-4  bg-gradient-to-bl from-[#8e5047] to-fuchsia-50 text-white px-4 py-2 rounded block mx-auto hover:scale-105 duration-300">
                     <FlutterWave
                       onPaymentSuccess={handlePaymentSuccess}
                       onCheckout={handleCheckout}

@@ -17,7 +17,7 @@ function CockTailss() {
     const timer = setTimeout(() => {
       setLoading(false);
       fetchCategories();
-    }, 3000);
+    });
     return () => clearTimeout(timer);
   }, []);
 

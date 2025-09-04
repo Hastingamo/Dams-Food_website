@@ -254,38 +254,46 @@ function FoodDetails() {
         details={[]}
       >
         <div className="flex flex-wrap   gap-4 mb-4">
-          <button
-            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-              activeTab === "instructions" ? "bg-gray-300" : ""
-            }`}
-            onClick={() => setActiveTab("instructions")}
-          >
-            Instructions
-          </button>
-          <button
-            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-              activeTab === "order" ? "bg-gray-300" : ""
-            }`}
-            onClick={() => setActiveTab("order")}
-          >
-            Place Order
-          </button>
-          <button
-            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-              activeTab === "video" ? "bg-gray-300" : ""
-            }`}
-            onClick={() => setActiveTab("video")}
-          >
-            Video
-          </button>
-          <button
-            className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
-              activeTab === "Review" ? "bg-gray-300" : ""
-            }`}
-            onClick={() => setActiveTab("Review")}
-          >
-            Review
-          </button>
+          <div className="hover:scale-105 transition-transform duration-200">
+            <button
+              className={`bg-[#f9f9f9] h px-4 py-2 rounded-lg ${
+                activeTab === "instructions" ? "bg-gray-300" : ""
+              }`}
+              onClick={() => setActiveTab("instructions")}
+            >
+              Instructions
+            </button>
+          </div>
+          <div className="hover:scale-105 transition-transform duration-200">
+            <button
+              className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+                activeTab === "order" ? "bg-gray-300" : ""
+              }`}
+              onClick={() => setActiveTab("order")}
+            >
+              Place Order
+            </button>
+          </div>
+          <div className="hover:scale-105 transition-transform duration-200">
+            <button
+              className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+                activeTab === "video" ? "bg-gray-300" : ""
+              }`}
+              onClick={() => setActiveTab("video")}
+            >
+              Video
+            </button>
+          </div>
+          <div className="hover:scale-105 transition-transform duration-200">
+            <button
+              className={`bg-[#f9f9f9] px-4 py-2 rounded-lg ${
+                activeTab === "Review" ? "bg-gray-300" : ""
+              }`}
+              onClick={() => setActiveTab("Review")}
+            >
+              Review
+            </button>
+          </div>
         </div>
 
         <div>{renderTabContent()}</div>
