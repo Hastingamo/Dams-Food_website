@@ -10,12 +10,12 @@ function Order() {
       }, []);
   return (
     <>
-        <div className='flex flex-row items-center justify-center min-h-screen bg-[#C88D84]'>
-            <Sidebars/>
-            <div className='w-full ml-[80px] h-screen'>
-                <h1 className='text-2xl font-bold mb-4 text-center'>Order</h1>
-                <div className='pt-8 md:px-[2rem] rounded-lg shadow-lg  w-full'>
-                    <div className='p-4'>
+        <div className="flex flex-col items-center bg-[#C88D84] min-h-screen overflow-x-hidden">
+  <Sidebars />
+
+  <div className="flex-1 w-full ml-[80px] p-6">
+    <h1 className="text-2xl font-bold mb-6 text-center">order </h1>
+
                         {order.length === 0 ? (
                             <p>Your order list is empty.</p>
                         ) : (
@@ -32,10 +32,8 @@ function Order() {
                                 ))}
                             </div>
                         )}
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
     </>
   )
 }
