@@ -13,6 +13,8 @@ import AddTochart from "./Pagess/AddTochart";
 import SafeTOLater from "./Pagess/SafeTOLater";
 import Order from "./Pagess/Order";
 import Hom from "./Pagess/Hom";
+import FoodDetailss from "./Pagess/FoodDetailss";
+import Subscription from "./Pagess/Subscription";
 // import createContext from "react";
 // import "./App.css";
 
@@ -46,9 +48,11 @@ function App() {
                 <Route path="/Dashboard" element={<Dashboard />} />
 
                 <Route path="/cocktails/:id" element={<CockDetails />} />
-                <Route path="/food/:id" element={<FoodDetials />} />
-                <Route path="/foodDetails" element={<FoodDetials />} />
+                <Route path="/food/:id" element={<FoodDetailss />} />
+                {/* <Route path="/foodDetails" element={<FoodDetials />} /> */}
+                <Route path="FoodDetailss" element={<FoodDetailss/>}/>
                 <Route path="AddToChart" element={<AddTochart />} />
+                <Route path="Subscription" element={<Subscription/>}/>
 
                 <Route path="Order" element={<Order />} />
               </Route>
