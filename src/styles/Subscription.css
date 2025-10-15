@@ -1,0 +1,96 @@
+.imagess {
+  background-image: url(./foods.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  box-shadow: 10px 0px 15px 4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 0px 15px 6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 0px 15px 6px rgba(0, 0, 0, 0.75);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 1px;
+  grid-row-gap: 0px;
+  height: 100vh;
+  position: absolute;
+  top: 50%;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+}
+.cardingss {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 100%;
+  width: f;
+}
+.cardingss::before {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(180deg, #f77cdc, rgb(79, 233, 233));
+  animation: animate 3s linear infinite;
+  transition: all 0.3s linear;
+  height: 130%;
+  width: 100px;
+}
+.cardingss::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background:#f3aedf ;
+  border-radius: 15px;
+}
+.cardingss > * {
+  position: absolute;
+  z-index: 15;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+.divs {
+
+  width: 100%;
+  border: 1px solid red;
+}
+.divss {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.divsss {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.divssss {
+  grid-area: 2 / 3 / 3 / 4;
+}
+@keyframes animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 410px) {
+  .container {
+    width: 25rem;
+  }
+}
+@media screen and (max-width: 790px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 0px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    width: 30rem;
+  }
+}

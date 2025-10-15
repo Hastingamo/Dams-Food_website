@@ -15,6 +15,7 @@ export default {
         'lls' :'1300px',
       },
 
+
     },
   },
   //   variants: {

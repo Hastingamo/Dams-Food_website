@@ -14,8 +14,7 @@ function FoodDetailss() {
   const [mealImages, setMealImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("instructions");
-  const [reviews, setReviews] = useState([]);
-  const [newReview, setNewReview] = useState("");
+
  const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
 
@@ -63,13 +62,13 @@ function FoodDetailss() {
 
     fetchMealDetails();
   }, [id]);
-  useEffect(() => {
-    if (meal?.idMeal) {
-      const saved =
-        JSON.parse(localStorage.getItem(`reviews_${meal.idMeal}`)) || [];
-      setReviews(saved);
-    }
-  }, [meal]);
+  // useEffect(() => {
+  //   if (meal?.idMeal) {
+  //     const saved =
+  //       JSON.parse(localStorage.getItem(`reviews_${meal.idMeal}`)) || [];
+  //     setReviews(saved);
+  //   }
+  // }, [meal]);
 
   if (loading)
     return (
