@@ -5,7 +5,6 @@ import Footer from "./Component/Footer";
 function LayOut() {
   return (
     <div className="flex flex-col">
-      <Header />
       <Outlet />
       <Footer />
     </div>
